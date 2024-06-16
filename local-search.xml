@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>北京大学肖臻老师《区块链技术与应用》公开课笔记1</title>
+    <link href="/2024/06/16/20240616-02/"/>
+    <url>/2024/06/16/20240616-02/</url>
+    
+    <content type="html"><![CDATA[<h1 id="01-课程简介"><a href="#01-课程简介" class="headerlink" title="01-课程简介"></a>01-课程简介</h1><h2 id="区块链的本质是什么"><a href="#区块链的本质是什么" class="headerlink" title="区块链的本质是什么"></a>区块链的本质是什么</h2><p>1.有人说是下一代的价值互联网</p><p>2.有人说世界上最慢的数据库</p><p>实际上只当数据库使用非常缓慢，而且只实现了数据库的一部分功能。区块链技术目前比较有争议，有很多人吹捧区块链，也有人认为区块链就是庞氏骗局。区块链整体发展还处于早期阶段，需要强调的是，区块链≠加密货币。加密货币只是基于区块链技术的产物。</p><h2 id="课程大纲：比特币"><a href="#课程大纲：比特币" class="headerlink" title="课程大纲：比特币"></a>课程大纲：比特币</h2><p>比特币</p><ul><li>密码学基础</li><li>比特币的数据结构</li><li>共识协议和系统实现</li><li>挖矿算法和难度调整</li><li>比特币脚本</li><li>软分叉和硬分叉</li><li>匿名和隐私保护</li></ul><h2 id="课程大纲：以太坊"><a href="#课程大纲：以太坊" class="headerlink" title="课程大纲：以太坊"></a>课程大纲：以太坊</h2><p>以太坊</p><ul><li>概述：基于账户的分布式账本</li><li>数据结构：状态树、交易树、收据树</li><li>GHOST协议</li><li>挖矿：memory-hard mining puzzle</li><li>挖矿难度调整</li><li>权益证明</li><li>智能合约</li></ul><p>总结与展望</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>区块链</tag>
+      
+      <tag>理论</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>在右键菜单新增文件类型</title>
     <link href="/2024/06/16/20240616-01/"/>
     <url>/2024/06/16/20240616-01/</url>
