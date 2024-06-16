@@ -4,11 +4,40 @@
   
   
   <entry>
+    <title>开启一段新生活？</title>
+    <link href="/2024/06/16/20240616-04/"/>
+    <url>/2024/06/16/20240616-04/</url>
+    
+    <content type="html"><![CDATA[<h2 id="开启一段新生活？"><a href="#开启一段新生活？" class="headerlink" title="开启一段新生活？"></a>开启一段新生活？</h2><h3 id="流水账"><a href="#流水账" class="headerlink" title="流水账"></a>流水账</h3><p>很久没吃过三餐了，回家这几天被迫一日三餐正常饮食，虽然基本九十点起床，但是还是得吃早餐。中午一点左右吃中饭，下午五六点吃晚饭。早上把之前看过几集的区块链公开课重新看了一遍，打算做做笔记，我也不知道能坚持多久，感觉做笔记还是有点困难的，我不太能抓住重点，全记下的话又觉得很臃肿，相当于把老师说的话抄了一遍。到时候再学学具体做笔记的方法论。</p><p>下午去健身房练背，感觉没有教练，背，肩始终还是不太会练，不太确定动作是否标准，发力到不到位。健身房的杠铃杆有些生锈，我的手套已经沾上锈了。不过今天有氧整了半小时，比昨天强多了。不过感觉爬坡的时候右腿的小腿肌肉酸的厉害，估计是太久没做有氧导致的吧。我也不知道无氧后的有氧有没有用，听说无氧能消耗糖原，再去做有氧就能消耗脂肪了，希望如此吧，低体脂确实好看。突然想起来今天做引体做的真费劲，在寝室的杠子能做2-3个，今天在健身房一个自由引体都拉不起，可能是在这之前做了高位下拉，有点力竭了吧。不知道啥时候自由引体能做组，估计那个时候背部肌肉就很明显了吧。</p><p>练完开车送我妈去超市，路上提了一嘴吉他钢琴什么的，我妈直接就给我安排老师了，她的人脉是真的丰富，我佩服的五体投地。路上开着车，听着歌，感觉每天学习一下，锻炼身体，再学点乐器，玩玩游戏，过的挺充实的。以前有点抑郁，找不到任何生活的乐趣，现在充实一点感觉人好多了，尤其是健身能分泌多巴胺。希望我能坚持下去，不过健身我都坚持下来了，感觉坚持别的这些应该也挺简单？毕竟挺快乐的，不是被强迫的，突然感觉这才是生活。</p><h3 id="画饼"><a href="#画饼" class="headerlink" title="画饼"></a>画饼</h3><p>这几天接触博客，很想加入播放器插件，到时候研究一下aplayer，安排一下。</p><h3 id="锻炼"><a href="#锻炼" class="headerlink" title="锻炼"></a>锻炼</h3><table><thead><tr><th>动作</th><th>容量</th></tr></thead><tbody><tr><td>高位下拉</td><td>4片 12次4组</td></tr><tr><td>器械划船</td><td>39kg 8次4组</td></tr><tr><td>杠铃划船</td><td>30kg 12次4组</td></tr><tr><td>器械引体</td><td>4次5组（太弱了）</td></tr><tr><td>爬坡</td><td>坡度15 速度4 30min</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>锻炼</tag>
+      
+      <tag>学习</tag>
+      
+      <tag>流水账</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>北京大学肖臻老师《区块链技术与应用》公开课笔记2</title>
     <link href="/2024/06/16/20240616-03/"/>
     <url>/2024/06/16/20240616-03/</url>
     
-    <content type="html"><![CDATA[<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="02-BTC-密码学原理"><a href="#02-BTC-密码学原理" class="headerlink" title="02-BTC-密码学原理"></a>02-BTC-密码学原理</h1><h2 id="使用的密码学功能"><a href="#使用的密码学功能" class="headerlink" title="使用的密码学功能"></a>使用的密码学功能</h2><p>1.哈希</p><p>2.签名</p><h3 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h3><p>哈希采用cryptographic hash function，有两个重要的性质：</p><p>1.抗碰撞性collision resistance</p><p>并非完全不会产生哈希碰撞，实际上碰撞时客观存在的，但是没有什么高效的方法人为地制造哈希碰撞，只能采用brute-force(暴力破解)。但是工作量太大，实际不可行。</p><p>collision resistance的作用：对信息作摘要。H(m)&#x3D;digest，当m的值更改后，digest的值也会发生变化。这个性质指很难找到一个m’，使得H(m’)&#x3D;H(m)</p><p>2.隐蔽性hiding</p><p>给定一个x可以算出H(x)，但是不能通过H(x)反推出x。</p><p>hiding的作用：可以和collision resistance共同作用，实现digital commitment(digital equivalent of a sealed envelope)。我个人的理解是，我可以公开H(x)，但是他人无法反推出x，并且由于H(x)的公开，我不能篡改x，如果他人需要验证，篡改的x’会导致H(x)!&#x3D;H(x’)</p><p>实际操作上，为了使输入输出更加随机，会拼接nonce，输出H(x||nonce)</p><p>以上是密码学要求的哈希的函数的性质，除此之外，比特币中的哈希函数还需要用到第三个性质：puzzle friendly</p><p>哈希值产生的范围不可预测，比如要求生成一个前k位都是0的哈希值，只能一个个尝试，不能走捷径。</p><p>挖矿实质就是找到那个nonce，通过暴力尝试出H(block header||nonce)&lt;&#x3D;target space，挖矿的过程产生了工作量证明(proof of work),difficult to solve, but easy to verify.</p><p>比特币使用的哈希函数为SHA-256。</p><h3 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h3><p>开户只需要创立公私钥对，基于非对称加密体系。用接收人公布的公钥加密，接收人通过自己的私钥解密。</p><p>好处是公钥可以公开，解决了对称加密中密钥分发的问题。发布交易时用自己的私钥加密，他人用公钥验证签名是否有效。</p><h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>collision resistance和puzzle friendly看上去很相似，我认为最本质的区别是collision resistance只需要保证输出不会碰撞，但是可能会有某个输入的范围或者输入的规律，使得输出也有相应的规律。打一个不恰当比方，可能会有这样一个哈希函数，输入aaa，输出的开头一定包含aaa，比如aaa111。而puzzle friendly则是避免了这种情况，不存在所谓的规律可行，使得可以专门构造输入生成一定规律的输出，所以只能暴力枚举尝试。</p>]]></content>
     
     
     <categories>
