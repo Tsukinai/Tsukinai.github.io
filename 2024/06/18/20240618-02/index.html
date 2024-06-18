@@ -16,24 +16,28 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="01-课程简介区块链的本质是什么1.有人说是下一代的价值互联网 2.有人说世界上最慢的数据库 实际上只当数据库使用非常缓慢，而且只实现了数据库的一部分功能。区块链技术目前比较有争议，有很多人吹捧区块链，也有人认为区块链就是庞氏骗局。区块链整体发展还处于早期阶段，需要强调的是，区块链≠加密货币。加密货币只是基于区块链技术的产物。 课程大纲：比特币比特币  密码学基础 比特币的数据结构 共识协议和系统">
+    <meta name="description" content="Solidity基础01Solidity官方文档深入理解Solidity — Solidity develop 文档 (solidity-cn.readthedocs.io) solidity版本1234567&#x2F;&#x2F; 标注solidity版本&#x2F;&#x2F; SPDX-License-Identifier: MIT&#x2F;&#x2F; ^0.8.7 代表需要大于等于0.8.7版本&#x2F;&#x2F; 只有0.8.26代表只能使用0.8.26版">
 <meta property="og:type" content="article">
-<meta property="og:title" content="北京大学肖臻老师《区块链技术与应用》公开课笔记1">
-<meta property="og:url" content="http://tsukinai.github.io/2024/06/16/20240616-02/index.html">
+<meta property="og:title" content="Chainlink公开课笔记1">
+<meta property="og:url" content="http://tsukinai.github.io/2024/06/18/20240618-02/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="01-课程简介区块链的本质是什么1.有人说是下一代的价值互联网 2.有人说世界上最慢的数据库 实际上只当数据库使用非常缓慢，而且只实现了数据库的一部分功能。区块链技术目前比较有争议，有很多人吹捧区块链，也有人认为区块链就是庞氏骗局。区块链整体发展还处于早期阶段，需要强调的是，区块链≠加密货币。加密货币只是基于区块链技术的产物。 课程大纲：比特币比特币  密码学基础 比特币的数据结构 共识协议和系统">
+<meta property="og:description" content="Solidity基础01Solidity官方文档深入理解Solidity — Solidity develop 文档 (solidity-cn.readthedocs.io) solidity版本1234567&#x2F;&#x2F; 标注solidity版本&#x2F;&#x2F; SPDX-License-Identifier: MIT&#x2F;&#x2F; ^0.8.7 代表需要大于等于0.8.7版本&#x2F;&#x2F; 只有0.8.26代表只能使用0.8.26版">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-16T04:52:47.000Z">
-<meta property="article:modified_time" content="2024-06-16T04:59:02.341Z">
+<meta property="og:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/1.png">
+<meta property="og:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/2.png">
+<meta property="og:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/3.png">
+<meta property="article:published_time" content="2024-06-18T13:53:12.000Z">
+<meta property="article:modified_time" content="2024-06-18T16:14:18.702Z">
 <meta property="article:author" content="Tsukinai">
 <meta property="article:tag" content="区块链">
-<meta property="article:tag" content="理论">
-<meta property="article:tag" content="《区块链技术与应用》公开课">
+<meta property="article:tag" content="代码">
+<meta property="article:tag" content="Chainlink公开课">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/1.png">
   
   
   
-  <title>北京大学肖臻老师《区块链技术与应用》公开课笔记1 - Tsukinai</title>
+  <title>Chainlink公开课笔记1 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -276,7 +280,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="北京大学肖臻老师《区块链技术与应用》公开课笔记1"></span>
+            <span id="subtitle" data-typed-text="Chainlink公开课笔记1"></span>
           
         </div>
 
@@ -287,8 +291,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-16 12:52" pubdate>
-          2024年6月16日 下午
+        <time datetime="2024-06-18 21:53" pubdate>
+          2024年6月18日 晚上
         </time>
       </span>
     
@@ -299,7 +303,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          269 字
+          1.4k 字
         
       </span>
     
@@ -310,7 +314,7 @@
         
         
         
-          3 分钟
+          12 分钟
         
       </span>
     
@@ -355,35 +359,82 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">北京大学肖臻老师《区块链技术与应用》公开课笔记1</h1>
+            <h1 id="seo-header">Chainlink公开课笔记1</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="01-课程简介"><a href="#01-课程简介" class="headerlink" title="01-课程简介"></a>01-课程简介</h1><h2 id="区块链的本质是什么"><a href="#区块链的本质是什么" class="headerlink" title="区块链的本质是什么"></a>区块链的本质是什么</h2><p>1.有人说是下一代的价值互联网</p>
-<p>2.有人说世界上最慢的数据库</p>
-<p>实际上只当数据库使用非常缓慢，而且只实现了数据库的一部分功能。区块链技术目前比较有争议，有很多人吹捧区块链，也有人认为区块链就是庞氏骗局。区块链整体发展还处于早期阶段，需要强调的是，区块链≠加密货币。加密货币只是基于区块链技术的产物。</p>
-<h2 id="课程大纲：比特币"><a href="#课程大纲：比特币" class="headerlink" title="课程大纲：比特币"></a>课程大纲：比特币</h2><p>比特币</p>
+                <h1 id="Solidity基础01"><a href="#Solidity基础01" class="headerlink" title="Solidity基础01"></a>Solidity基础01</h1><h2 id="Solidity官方文档"><a href="#Solidity官方文档" class="headerlink" title="Solidity官方文档"></a>Solidity官方文档</h2><p><a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/solidity-in-depth.html">深入理解Solidity — Solidity develop 文档 (solidity-cn.readthedocs.io)</a></p>
+<h2 id="solidity版本"><a href="#solidity版本" class="headerlink" title="solidity版本"></a>solidity版本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs solidity">// 标注solidity版本<br>// SPDX-License-Identifier: MIT<br>// ^0.8.7 代表需要大于等于0.8.7版本<br>// 只有0.8.26代表只能使用0.8.26版本<br>// 可以用大于小于号指定版本范围<br>// eg. pragma solidity &gt;=0.8.1 &lt;0.9.1<br>pragma solidity ^0.8.26;<br></code></pre></td></tr></table></figure>
+
+<h2 id="solidity基础数据类型"><a href="#solidity基础数据类型" class="headerlink" title="solidity基础数据类型"></a>solidity基础数据类型</h2><p>基础的数据类型：bool，uint，int，address</p>
+<p><code>bool</code> ：可能的取值为字面常数值 <code>true</code> 和 <code>false</code> 。</p>
+<p><code>int</code> &#x2F; <code>uint</code> ：分别表示有符号和无符号的不同位数的整型变量。 支持关键字 <code>uint8</code> 到 <code>uint256</code> （无符号，从 8 位到 256 位）以及 <code>int8</code> 到 <code>int256</code>，以 <code>8</code> 位为步长递增。 <code>uint</code> 和 <code>int</code> 分别是 <code>uint256</code> 和 <code>int256</code> 的别名。</p>
+<p><code>address</code>：地址类型存储一个 20 字节的值（以太坊地址的大小）。 地址类型也有成员变量，并作为所有合约的基础。</p>
+<p><code>bytes</code>:变长字节数组。</p>
+<p><code>string</code>:变长 UTF-8 编码字符串类型。也是一种<code>bytes</code>，但是只能存储文本。</p>
+<h2 id="solidity函数"><a href="#solidity函数" class="headerlink" title="solidity函数"></a>solidity函数</h2><p>每个合约都有一个地址，就像每个账户都有地址一样。在部署后可以在终端看见部署细节，比如状态，交易哈希等等。部署一个合约相当于就是发送一个交易，在区块链做任何事，修改任何状态，就是在发一个交易。部署了一个合约就修改了区块链，让链上拥有这个合约。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract SimpleStorage&#123;<br>    // 会以0来初始化变量，如果没有赋值<br>    // 加上public才能看到变量<br>    uint256 public favoriteNumber;<br>    // uint256 favoriteNumber;<br>    function store(uint256 _favoriteNumber) public &#123;<br>        favoriteNumber = _favoriteNumber;<br>        // 增加操作，使得函数更复杂<br>        // favoriteNumber += 1;<br>        // 调用view函数是免费的，除非在消耗gas的函数中调用，因此此处gas会增加<br>        // retrieve();<br>    &#125;<br>    <br>    // view，pure函数类型<br>    // 在合约区显示为蓝色，不消耗gas<br>    function retrieve() public view returns(uint256)&#123;<br>    	return favoriteNumber;<br>    &#125;<br>    <br>    function add() public pure returns(uint256)&#123;<br>    	return(1+1);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在部署合约区中，往框里输入114514，然后点击store，可以看到发了另一笔交易，在_favoriteNumber中存储了114514。但是无法知道favoriteNumber是否产生相应改变，因为favoriteNumber没有加修饰符public，加上后可以在部署合约区查看。<img src="1.png" srcset="/img/loading.gif" lazyload alt="第一次传入变量" width = 100% /><img src="2.png" srcset="/img/loading.gif" lazyload alt="第二笔交易" width = 100% /><img src="3.png" srcset="/img/loading.gif" lazyload alt="查看变量" width = 100% /></p>
+<p>在函数中增加操作，使函数更加复杂，这个函数消耗的计算量更多，执行交易消耗的gas也会更多。</p>
+<p>定义solidity函数的语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function functionName(type param1, type param2, ...) public/external/internal/private returns (type1 returnVar1, type2 returnVar2,...) &#123;<br>    // 函数体<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ul>
-<li>密码学基础</li>
-<li>比特币的数据结构</li>
-<li>共识协议和系统实现</li>
-<li>挖矿算法和难度调整</li>
-<li>比特币脚本</li>
-<li>软分叉和硬分叉</li>
-<li>匿名和隐私保护</li>
+<li><code>function</code>：这是声明一个新函数所必需的关键字。</li>
+<li><code>functionName</code>：这就是你给你的函数起名字。</li>
+<li><code>type param1, type param2,...</code>： 这些就是输入参数和它们对应类型。如果没有参数，那么括号内为空。</li>
+<li><code>public/external/internal/private</code>: 这些关键词定义了访问控制类型，决定了哪些其他合约或者账户可以调用该函数。<ul>
+<li>public: 任何人都能调用此类方法</li>
+<li>external: 只有外部账户和其他合约才能调用此类方法</li>
+<li>internal: 只有当前智能合同或者从当前智能合同继承来得到新创建得到智能合同才可访问此类方法</li>
+<li>private: 只有当前智能协议内部可访问此类方法</li>
 </ul>
-<h2 id="课程大纲：以太坊"><a href="#课程大纲：以太坊" class="headerlink" title="课程大纲：以太坊"></a>课程大纲：以太坊</h2><p>以太坊</p>
-<ul>
-<li>概述：基于账户的分布式账本</li>
-<li>数据结构：状态树、交易树、收据树</li>
-<li>GHOST协议</li>
-<li>挖矿：memory-hard mining puzzle</li>
-<li>挖矿难度调整</li>
-<li>权益证明</li>
-<li>智能合约</li>
+</li>
+<li><code>returns (type returnVar1,...)</code>: 如果一个函数需要返回结果，那么需要使用returns关键字，后面跟着返回值的类型和变量名。</li>
 </ul>
-<p>总结与展望</p>
+<h3 id="View-函数"><a href="#View-函数" class="headerlink" title="View 函数"></a>View 函数</h3><p>可以将函数声明为 <code>view</code> 类型，这种情况下要保证不修改状态。</p>
+<p>下面的语句被认为是修改状态：</p>
+<ol>
+<li>修改状态变量。</li>
+<li><a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/contracts.html#events">产生事件</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/control-structures.html#creating-contracts">创建其它合约</a>。</li>
+<li>使用 <code>selfdestruct</code>。</li>
+<li>通过调用发送以太币。</li>
+<li>调用任何没有标记为 <code>view</code> 或者 <code>pure</code> 的函数。</li>
+<li>使用低级调用。</li>
+<li>使用包含特定操作码的内联汇编。</li>
+</ol>
+<blockquote>
+<p>注解</p>
+<p><code>constant</code> 是 <code>view</code> 的别名</p>
+<p>Getter 方法被标记为 <code>view</code>。</p>
+</blockquote>
+<p><font color=red>警告：编译器没有强制 <code>view</code> 方法不能修改状态。</font></p>
+<h3 id="Pure-函数"><a href="#Pure-函数" class="headerlink" title="Pure 函数"></a>Pure 函数</h3><p>函数可以声明为 <code>pure</code> ，在这种情况下，承诺不读取或修改状态。</p>
+<p>除了上面解释的状态修改语句列表之外，以下被认为是从状态中读取：</p>
+<ol>
+<li>读取状态变量。</li>
+<li>访问 <code>this.balance</code> 或者 <code>&lt;address&gt;.balance</code>。</li>
+<li>访问 <code>block</code>，<code>tx</code>， <code>msg</code> 中任意成员 （除 <code>msg.sig</code> 和 <code>msg.data</code> 之外）。</li>
+<li>调用任何未标记为 <code>pure</code> 的函数。</li>
+<li>使用包含某些操作码的内联汇编。</li>
+</ol>
+<p><font color=red>警告：编译器没有强制 <code>pure</code> 方法不能读取状态。</font></p>
+<h2 id="可见性标识符"><a href="#可见性标识符" class="headerlink" title="可见性标识符"></a>可见性标识符</h2><p>函数和状态变量有四种可见性类型。 函数可以指定为 <code>external</code> ，<code>public</code> ，<code>internal</code> 或者 <code>private</code>，默认情况下函数类型为 <code>public</code>。 对于状态变量，不能设置为 <code>external</code> ，默认是 <code>internal</code> 。</p>
+<p><code>external</code> ：</p>
+<p>外部函数作为合约接口的一部分，意味着我们可以从其他合约和交易中调用。 一个外部函数 <code>f</code> 不能从内部调用（即 <code>f</code> 不起作用，但 <code>this.f()</code> 可以）。 当收到大量数据的时候，外部函数有时候会更有效率。</p>
+<p><code>public</code> ：</p>
+<p>public 函数是合约接口的一部分，可以在内部或通过消息调用。对于公共状态变量， 会自动生成一个 getter 函数。</p>
+<p><code>internal</code> ：</p>
+<p>这些函数和状态变量只能是内部访问（即从当前合约内部或从它派生的合约访问），不使用 <code>this</code> 调用。</p>
+<p><code>private</code> ：</p>
+<p>private 函数和状态变量仅在当前定义它们的合约中使用，并且不能被派生合约使用。</p>
+<blockquote>
+<p>注解</p>
+<p>合约中的所有内容对外部观察者都是可见的。设置一些 <code>private</code> 类型只能阻止其他合约访问和修改这些信息， 但是对于区块链外的整个世界它仍然是可见的。</p>
+</blockquote>
 
                 
               </div>
@@ -419,9 +470,9 @@
       
         <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="print-no-link">#区块链</a>
       
-        <a href="/tags/%E7%90%86%E8%AE%BA/" class="print-no-link">#理论</a>
+        <a href="/tags/%E4%BB%A3%E7%A0%81/" class="print-no-link">#代码</a>
       
-        <a href="/tags/%E3%80%8A%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8%E3%80%8B%E5%85%AC%E5%BC%80%E8%AF%BE/" class="print-no-link">#《区块链技术与应用》公开课</a>
+        <a href="/tags/Chainlink%E5%85%AC%E5%BC%80%E8%AF%BE/" class="print-no-link">#Chainlink公开课</a>
       
     </div>
   
@@ -433,8 +484,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>北京大学肖臻老师《区块链技术与应用》公开课笔记1</div>
-      <div>http://tsukinai.github.io/2024/06/16/20240616-02/</div>
+      <div>Chainlink公开课笔记1</div>
+      <div>http://tsukinai.github.io/2024/06/18/20240618-02/</div>
     </div>
     <div class="license-meta">
       
@@ -446,7 +497,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月16日</div>
+          <div>2024年6月18日</div>
         </div>
       
       
@@ -478,18 +529,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/16/20240616-03/" title="北京大学肖臻老师《区块链技术与应用》公开课笔记2">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">北京大学肖臻老师《区块链技术与应用》公开课笔记2</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/16/20240616-01/" title="在右键菜单新增文件类型">
-                        <span class="hidden-mobile">在右键菜单新增文件类型</span>
+                      <a href="/2024/06/18/20240618-01/" title="I love you more than you&#39;ll ever know">
+                        <span class="hidden-mobile">I love you more than you&#39;ll ever know</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
