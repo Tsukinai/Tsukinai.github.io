@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>excel表格拆分工作簿</title>
+    <link href="/2024/07/27/01/"/>
+    <url>/2024/07/27/01/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="excel表格拆分工作簿"><a href="#excel表格拆分工作簿" class="headerlink" title="excel表格拆分工作簿"></a>excel表格拆分工作簿</h2><p>今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。</p><img src="1.png" width = 60% alt="图1"/><img src="2.png" width = 60% alt="图2"/><p>1.打开需要拆分的工作表</p><p>2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定）</p><p>3.点击Visual Basic，弹出Visual Basic编辑器</p><p>4.点击插入，选择模块</p><p>5.输入代码，点击运行键（绿色播放键）</p><figure><div class="code-wrapper"><pre class="line-numbers language-visual-basic" data-language="visual-basic"><code class="language-visual-basic">Sub 拆分工作簿()Dim ss As WorksheetApplication.DisplayAlerts &#x3D; FalseFor Each ss In WorksheetsWorkbooks.AddWith ActiveWorkbookss.Copy .Sheets(1).SaveAs ThisWorkbook.Path &amp; &quot;&#x2F;&quot; &amp; ss.Name.CloseEnd WithNext ssApplication.DisplayAlerts &#x3D; TrueMsgBox &quot;工作薄拆分完毕！&quot;End Sub</code></pre></div></figure><p>6.拆分的工作簿将输出到被拆分的工作表的目录下</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Office小技巧</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Office</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>又一次走上正轨</title>
     <link href="/2024/06/29/01/"/>
     <url>/2024/06/29/01/</url>
