@@ -16,25 +16,23 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="excel表格拆分工作簿今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。        1.打开需要拆分的工作表 2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定） 3.点击Visual Basic，弹出Visual Basic编辑器 4.">
+    <meta name="description" content="原题给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。 你可以按任意顺序返回答案。 示例 1： 输入：nums &#x3D; [2,7,11,15], target &#x3D; 9 输出：[0,1] 解释：因为 nums[0] + n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="excel表格拆分工作簿">
-<meta property="og:url" content="http://tsukinai.github.io/2024/07/27/01/index.html">
+<meta property="og:title" content="LC001 - 两数之和">
+<meta property="og:url" content="http://tsukinai.github.io/2025/07/24/LC001/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="excel表格拆分工作簿今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。        1.打开需要拆分的工作表 2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定） 3.点击Visual Basic，弹出Visual Basic编辑器 4.">
+<meta property="og:description" content="原题给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。 你可以按任意顺序返回答案。 示例 1： 输入：nums &#x3D; [2,7,11,15], target &#x3D; 9 输出：[0,1] 解释：因为 nums[0] + n">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tsukinai.github.io/2024/07/27/01/1.png">
-<meta property="og:image" content="http://tsukinai.github.io/2024/07/27/01/2.png">
-<meta property="article:published_time" content="2024-07-27T11:12:47.000Z">
-<meta property="article:modified_time" content="2024-07-27T11:29:37.908Z">
+<meta property="article:published_time" content="2025-07-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-24T15:02:13.357Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="Office">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="简单">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://tsukinai.github.io/2024/07/27/01/1.png">
   
   
   
-  <title>excel表格拆分工作簿 - Tsukinai</title>
+  <title>LC001 - 两数之和 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -279,7 +277,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="excel表格拆分工作簿"></span>
+            <span id="subtitle" data-typed-text="LC001 - 两数之和"></span>
           
         </div>
 
@@ -290,8 +288,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-27 19:12" pubdate>
-          2024年7月27日 晚上
+        <time datetime="2025-07-24 00:00" pubdate>
+          2025年7月24日 凌晨
         </time>
       </span>
     
@@ -302,7 +300,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          216 字
+          596 字
         
       </span>
     
@@ -313,7 +311,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -358,40 +356,73 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">excel表格拆分工作簿</h1>
+            <h1 id="seo-header">LC001 - 两数之和</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="excel表格拆分工作簿"><a href="#excel表格拆分工作簿" class="headerlink" title="excel表格拆分工作簿"></a>excel表格拆分工作簿</h2><p>今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。</p>
-<img src="1.png" srcset="/img/loading.gif" lazyload width = 60% alt="图1"/>
+                <h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [2,7,11,15], target &#x3D; 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</code></pre></div></figure>
 
-<br>
-<br>
+<p><strong>示例 2：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [3,2,4], target &#x3D; 6
+输出：[1,2]</code></pre></div></figure>
 
-<img src="2.png" srcset="/img/loading.gif" lazyload width = 60% alt="图2"/>
+<p><strong>示例 3：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [3,3], target &#x3D; 6
+输出：[0,1]</code></pre></div></figure>
 
-<p>1.打开需要拆分的工作表</p>
-<p>2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定）</p>
-<p>3.点击Visual Basic，弹出Visual Basic编辑器</p>
-<p>4.点击插入，选择模块</p>
-<p>5.输入代码，点击运行键（绿色播放键）</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-visual-basic" data-language="visual-basic"><code class="language-visual-basic">Sub 拆分工作簿()
-Dim ss As Worksheet
-Application.DisplayAlerts &#x3D; False
-For Each ss In Worksheets
-Workbooks.Add
-With ActiveWorkbook
-ss.Copy .Sheets(1)
-.SaveAs ThisWorkbook.Path &amp; &quot;&#x2F;&quot; &amp; ss.Name
-.Close
-End With
-Next ss
-Application.DisplayAlerts &#x3D; True
-MsgBox &quot;工作薄拆分完毕！&quot;
-End Sub</code></pre></div></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 104</code></li>
+<li><code>-109 &lt;= nums[i] &lt;= 109</code></li>
+<li><code>-109 &lt;= target &lt;= 109</code></li>
+<li><strong>只会存在一个有效答案</strong></li>
+</ul>
+<p><strong>进阶：</strong>你可以想出一个时间复杂度小于 <code>O(n2)</code> 的算法吗？</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public int[] twoSum(int[] nums, int target) &#123;
+        &#x2F;&#x2F; 取数组的一个数
+        for (int i &#x3D; 0; i &lt; nums.length; i++) &#123;
+            &#x2F;&#x2F; 遍历该数后的每一个数，判断相加是否为target
+            for (int j &#x3D; i + 1; j &lt; nums.length; j++) &#123;
+                if (nums[i] + nums[j] &#x3D;&#x3D; target) &#123;
+                    return new int[]&#123;i, j&#125;;
+                &#125;
+            &#125;
+        &#125;
+        return new int[]&#123;0&#125;;
+    &#125;
+&#125;</code></pre></div></figure>
 
-<p>6.拆分的工作簿将输出到被拆分的工作表的目录下</p>
+<p>时间复杂度：O($N^2$)，$N$是数组中元素数量，双层循环</p>
+<p>空间复杂度：O(1)</p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public int[] twoSum(int[] nums, int target) &#123;
+        &#x2F;&#x2F; 构建HashMap key是数组中的数 value是对应下标
+        Map&lt;Integer, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+
+        &#x2F;&#x2F; 遍历数组
+        for (int i &#x3D; 0; i &lt; nums.length; i++) &#123;
+            &#x2F;&#x2F; 找到了map中的一个key 这个key+nums[i]&#x3D;target ,返回对应的value和i
+            if (map.containsKey(target - nums[i])) &#123;
+                return new int[]&#123;i, map.get(target - nums[i])&#125;;
+            &#125;
+            map.put(nums[i], i);
+        &#125;
+        return new int[]&#123;0&#125;;
+    &#125;
+&#125;</code></pre></div></figure>
+
+<p>时间复杂度：O($N$)，$N$是数组中元素数量</p>
+<p>空间复杂度：O($N$)，$N$是数组中元素数量，哈希表存储开销</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有人相爱，有人夜里开车看海，有人leetcode第一题都做不出来:）</p>
+<p>暴力算法时间复杂度比较高，是因为需要两层循环，如何通过遍历一次数组就可以得到结果呢？可以利用哈希表的映射，key存储数组元素，value存储下标。对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code> 插入到哈希表中，即可保证不会让 <code>x</code> 和自己匹配。</p>
 
                 
               </div>
@@ -410,8 +441,15 @@ End Sub</code></pre></div></figure>
     
       <span class="category-chain">
         
-  <a href="/categoriesF/Office%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-chain-item">Office小技巧</a>
+  <a href="/categoriesF/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="category-chain-item">力扣刷题记录</a>
   
+  
+    <span>></span>
+    
+  <a href="/categoriesF/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+
   
 
       </span>
@@ -425,7 +463,9 @@ End Sub</code></pre></div></figure>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Office/" class="print-no-link">#Office</a>
+        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="print-no-link">#哈希表</a>
+      
+        <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
       
     </div>
   
@@ -437,8 +477,8 @@ End Sub</code></pre></div></figure>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>excel表格拆分工作簿</div>
-      <div>http://tsukinai.github.io/2024/07/27/01/</div>
+      <div>LC001 - 两数之和</div>
+      <div>http://tsukinai.github.io/2025/07/24/LC001/</div>
     </div>
     <div class="license-meta">
       
@@ -450,7 +490,7 @@ End Sub</code></pre></div></figure>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月27日</div>
+          <div>2025年7月24日</div>
         </div>
       
       
@@ -482,18 +522,12 @@ End Sub</code></pre></div></figure>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/24/LC001/" title="LC001 - 两数之和">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC001 - 两数之和</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/29/01/" title="又一次走上正轨">
-                        <span class="hidden-mobile">又一次走上正轨</span>
+                      <a href="/2024/07/27/01/" title="excel表格拆分工作簿">
+                        <span class="hidden-mobile">excel表格拆分工作簿</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

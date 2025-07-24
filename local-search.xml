@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>LC001 - 两数之和</title>
+    <link href="/2025/07/24/LC001/"/>
+    <url>/2025/07/24/LC001/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p><p>你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。</p><p>你可以按任意顺序返回答案。</p><p><strong>示例 1：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [2,7,11,15], target &#x3D; 9输出：[0,1]解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</code></pre></div></figure><p><strong>示例 2：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [3,2,4], target &#x3D; 6输出：[1,2]</code></pre></div></figure><p><strong>示例 3：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [3,3], target &#x3D; 6输出：[0,1]</code></pre></div></figure><p><strong>提示：</strong></p><ul><li><code>2 &lt;= nums.length &lt;= 104</code></li><li><code>-109 &lt;= nums[i] &lt;= 109</code></li><li><code>-109 &lt;= target &lt;= 109</code></li><li><strong>只会存在一个有效答案</strong></li></ul><p><strong>进阶：</strong>你可以想出一个时间复杂度小于 <code>O(n2)</code> 的算法吗？</p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        &#x2F;&#x2F; 取数组的一个数        for (int i &#x3D; 0; i &lt; nums.length; i++) &#123;            &#x2F;&#x2F; 遍历该数后的每一个数，判断相加是否为target            for (int j &#x3D; i + 1; j &lt; nums.length; j++) &#123;                if (nums[i] + nums[j] &#x3D;&#x3D; target) &#123;                    return new int[]&#123;i, j&#125;;                &#125;            &#125;        &#125;        return new int[]&#123;0&#125;;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：O($N^2$)，$N$是数组中元素数量，双层循环</p><p>空间复杂度：O(1)</p><h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        &#x2F;&#x2F; 构建HashMap key是数组中的数 value是对应下标        Map&lt;Integer, Integer&gt; map &#x3D; new HashMap&lt;&gt;();        &#x2F;&#x2F; 遍历数组        for (int i &#x3D; 0; i &lt; nums.length; i++) &#123;            &#x2F;&#x2F; 找到了map中的一个key 这个key+nums[i]&#x3D;target ,返回对应的value和i            if (map.containsKey(target - nums[i])) &#123;                return new int[]&#123;i, map.get(target - nums[i])&#125;;            &#125;            map.put(nums[i], i);        &#125;        return new int[]&#123;0&#125;;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：O($N$)，$N$是数组中元素数量</p><p>空间复杂度：O($N$)，$N$是数组中元素数量，哈希表存储开销</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有人相爱，有人夜里开车看海，有人leetcode第一题都做不出来:）</p><p>暴力算法时间复杂度比较高，是因为需要两层循环，如何通过遍历一次数组就可以得到结果呢？可以利用哈希表的映射，key存储数组元素，value存储下标。对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code> 插入到哈希表中，即可保证不会让 <code>x</code> 和自己匹配。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>Classic150</category>
+      
+      <category>简单</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>哈希表</tag>
+      
+      <tag>简单</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>excel表格拆分工作簿</title>
     <link href="/2024/07/27/01/"/>
     <url>/2024/07/27/01/</url>
