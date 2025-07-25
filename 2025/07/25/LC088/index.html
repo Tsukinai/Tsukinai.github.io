@@ -16,24 +16,24 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="流水账论文的事情加上这几天电脑被霸占，又是好几天没写了。不得不说论文把我之前规律的生活彻底打乱，每天的学习，吉他还有健身都中断了很久（虽然只有几天但感觉很久）。尤其是健身，稍微停练几天就有种几个月没练的感觉。前几日和高中同学出去玩桌游，本来以为会有点尴尬，没想到比我想象的好很多，感觉我在熟人面前还是放的开点。晚上还打了麻将，好久没打红中赖子杠，都有点不记得规则了。学姐来玩的时间也定下">
+    <meta name="description" content="原题给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。 注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="又一次走上正轨">
-<meta property="og:url" content="http://tsukinai.github.io/2024/06/29/01/index.html">
+<meta property="og:title" content="LC088 - 合并两个有序数组">
+<meta property="og:url" content="http://tsukinai.github.io/2025/07/25/LC088/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="流水账论文的事情加上这几天电脑被霸占，又是好几天没写了。不得不说论文把我之前规律的生活彻底打乱，每天的学习，吉他还有健身都中断了很久（虽然只有几天但感觉很久）。尤其是健身，稍微停练几天就有种几个月没练的感觉。前几日和高中同学出去玩桌游，本来以为会有点尴尬，没想到比我想象的好很多，感觉我在熟人面前还是放的开点。晚上还打了麻将，好久没打红中赖子杠，都有点不记得规则了。学姐来玩的时间也定下">
+<meta property="og:description" content="原题给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。 注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tsukinai.github.io/2024/06/29/01/1.jpg">
-<meta property="article:published_time" content="2024-06-29T14:29:55.000Z">
-<meta property="article:modified_time" content="2024-06-29T14:46:46.699Z">
+<meta property="article:published_time" content="2025-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-25T07:14:17.128Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="流水账">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://tsukinai.github.io/2024/06/29/01/1.jpg">
   
   
   
-  <title>又一次走上正轨 - Tsukinai</title>
+  <title>LC088 - 合并两个有序数组 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -115,10 +115,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
-</head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
 
 <body>
@@ -281,7 +278,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="又一次走上正轨"></span>
+            <span id="subtitle" data-typed-text="LC088 - 合并两个有序数组"></span>
           
         </div>
 
@@ -292,8 +289,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-29 22:29" pubdate>
-          2024年6月29日 晚上
+        <time datetime="2025-07-25 00:00" pubdate>
+          2025年7月25日 凌晨
         </time>
       </span>
     
@@ -304,7 +301,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          603 字
+          939 字
         
       </span>
     
@@ -315,7 +312,7 @@
         
         
         
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -360,20 +357,81 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">又一次走上正轨</h1>
+            <h1 id="seo-header">LC088 - 合并两个有序数组</h1>
             
             
               <div class="markdown-body">
                 
-                
-    <div id="aplayer-AxIHsxOL" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="252786" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
-    ></div>
+                <h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><p>给你两个按 <strong>非递减顺序</strong> 排列的整数数组 <code>nums1</code> 和 <code>nums2</code>，另有两个整数 <code>m</code> 和 <code>n</code> ，分别表示 <code>nums1</code> 和 <code>nums2</code> 中的元素数目。</p>
+<p>请你 <strong>合并</strong> <code>nums2</code> 到 <code>nums1</code> 中，使合并后的数组同样按 <strong>非递减顺序</strong> 排列。</p>
+<p><strong>注意：</strong>最终，合并后数组不应由函数返回，而是存储在数组 <code>nums1</code> 中。为了应对这种情况，<code>nums1</code> 的初始长度为 <code>m + n</code>，其中前 <code>m</code> 个元素表示应合并的元素，后 <code>n</code> 个元素为 <code>0</code> ，应忽略。<code>nums2</code> 的长度为 <code>n</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums1 &#x3D; [1,2,3,0,0,0], m &#x3D; 3, nums2 &#x3D; [2,5,6], n &#x3D; 3
+输出：[1,2,2,3,5,6]
+解释：需要合并 [1,2,3] 和 [2,5,6] 。
+合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。</code></pre></div></figure>
 
-<h2 id="流水账"><a href="#流水账" class="headerlink" title="流水账"></a>流水账</h2><p>论文的事情加上这几天电脑被霸占，又是好几天没写了。不得不说论文把我之前规律的生活彻底打乱，每天的学习，吉他还有健身都中断了很久（虽然只有几天但感觉很久）。尤其是健身，稍微停练几天就有种几个月没练的感觉。前几日和高中同学出去玩桌游，本来以为会有点尴尬，没想到比我想象的好很多，感觉我在熟人面前还是放的开点。晚上还打了麻将，好久没打红中赖子杠，都有点不记得规则了。学姐来玩的时间也定下来了，5号就可以一起玩了，好耶！不过感觉最近聊天有点点尴尬的气息，我有点没话找话，感觉学姐也不是很想回，好尴尬，救命。新吉他到了，感觉好好看，而且还能直接插耳机不会扰民。吉他还能折叠，到时候带去新加坡也挺方便。这几天把房子的事情也定下来了，1300新一个月，可能还要附加一些别的，妈的好贵。</p>
-<img src="1.jpg" srcset="/img/loading.gif" lazyload alt="新吉他" width = 100% />
+<p><strong>示例 2：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums1 &#x3D; [1], m &#x3D; 1, nums2 &#x3D; [], n &#x3D; 0
+输出：[1]
+解释：需要合并 [1] 和 [] 。
+合并结果是 [1] 。</code></pre></div></figure>
 
-<p>明天起就可以恢复锻炼了，不知道掉没掉力量，每次停练几天总觉得自己掉肌肉了。而且最近也没有注意饮食，晚上家里没人就点了烧烤外卖，烧烤太好吃了，可惜不健康。感觉很多事，很多细节只有当天写下来才比较详细，稍微过个一两天就不记得啥了。我的记性时好时坏，有些事情记得可清楚，有些东西却记不太清。写着写着又想起来一些细节，跟高中同学出去玩，我问我跟高中有区别吗，他们觉得我一点都没变化，我是不是应该高兴，没显老。然后跟hyw交流留学的事情，本来以为我算有计划了，她告诉我现在就要考虑工签，公司还有跟大佬social啥的，突然发现自己还是没啥计划的p人，人家这才是j人。到时候再跟她请教请教应该咋整，想到要去social就头皮发麻。哦对，好几天没学习区块链了，到时候锻炼，学习，吉他还有旅游计划齐头并进。</p>
+<p><strong>示例 3：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：nums1 &#x3D; [0], m &#x3D; 0, nums2 &#x3D; [1], n &#x3D; 1
+输出：[1]
+解释：需要合并的数组是 [] 和 [1] 。
+合并结果是 [1] 。
+注意，因为 m &#x3D; 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。</code></pre></div></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>nums1.length == m + n</code></li>
+<li><code>nums2.length == n</code></li>
+<li><code>0 &lt;= m, n &lt;= 200</code></li>
+<li><code>1 &lt;= m + n &lt;= 200</code></li>
+<li><code>-109 &lt;= nums1[i], nums2[j] &lt;= 109</code></li>
+</ul>
+<p><strong>进阶：</strong>你可以设计实现一个时间复杂度为 <code>O(m + n)</code> 的算法解决此问题吗？</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public void merge(int[] nums1, int m, int[] nums2, int n) &#123;
+        &#x2F;&#x2F; 将nums2放到nums1数组的后面
+        for (int i &#x3D; 0; i &lt; n; i++) &#123;
+            nums1[m + i] &#x3D; nums2[i];
+        &#125;
+        &#x2F;&#x2F; 排序整个nums1数组
+        Arrays.sort(nums1);
+    &#125;
+&#125;</code></pre></div></figure>
+
+<p>时间复杂度：$O((m+n)log(m+n))$，$m+n$是数组总长度，快排时间复杂度是$O(nlogn)$，套用即可。</p>
+<p>空间复杂度：$O(log(m+n))$，套用快速排序的空间复杂度即可，平均情况为$O(logn)$。</p>
+<h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public void merge(int[] nums1, int m, int[] nums2, int n) &#123;
+        int p1 &#x3D; m - 1; &#x2F;&#x2F; nums1的末尾指针
+        int p2 &#x3D; n - 1; &#x2F;&#x2F; nums2的末尾指针
+        int p &#x3D; nums1.length - 1; &#x2F;&#x2F; 归并数组的末尾指针
+        
+        &#x2F;&#x2F; 归并nums1和nums2，比较大小，哪个大就放在末尾，然后指针前移继续比较
+        while (p1 &gt;&#x3D; 0 &amp;&amp; p2 &gt;&#x3D; 0) &#123;
+            nums1[p--] &#x3D; nums1[p1] &gt; nums2[p2] ? nums1[p1--] : nums2[p2--];
+        &#125;
+        
+        &#x2F;&#x2F; 如果nums1没有排序完，不需要额外操作，因为本身就是有序的
+        &#x2F;&#x2F; 如果nums2没有排序完，将nums2依次添加到nums中
+        while (p2 &gt;&#x3D; 0) &#123;
+            nums1[p--] &#x3D; nums2[p2--];
+        &#125;
+    &#125;
+&#125;</code></pre></div></figure>
+
+<p>时间复杂度：$O(m+n)$，指针移动单调递减，一共移动$n+m$次。</p>
+<p>空间复杂度：$O(1)$，直接对nums1进行修改，不需要额外空间。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>暴力解法是最容易想到的，先把所有数都放在数组当中，然后一口气排序就可以得到结果，但是相当于没有用到这两个数组都是有序的条件，所以时间复杂度更高。</p>
+<p>当给出有序数组排序的时候可以联想到归并排序的合并步骤，将两个数组头进行比较，小的放入归并后数组，然后移动指针。但是此处num1的头部是有数据的，如果直接使用归并算法的原思想的话，开头的元素会被覆盖，只能新开一个数组。不妨逆向思维，将两个数组尾比较，大的放到归并后数组尾部，尾部被覆盖就不会有问题。</p>
+<p>同时此处复习一下三元运算符，使用三元运算符，以及灵活利用++，–符号，可以缩短代码。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">条件 ? 表达式1 : 表达式2</code></pre></div></figure>
+
 
                 
               </div>
@@ -392,8 +450,15 @@
     
       <span class="category-chain">
         
-  <a href="/categoriesF/%E9%9A%8F%E7%AC%94/" class="category-chain-item">随笔</a>
+  <a href="/categoriesF/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="category-chain-item">力扣刷题记录</a>
   
+  
+    <span>></span>
+    
+  <a href="/categoriesF/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/Classic150/" class="category-chain-item">Classic150</a>
+  
+  
+
   
 
       </span>
@@ -407,7 +472,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="print-no-link">#流水账</a>
+        <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/" class="print-no-link">#数组</a>
+      
+        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#双指针</a>
       
     </div>
   
@@ -419,8 +488,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>又一次走上正轨</div>
-      <div>http://tsukinai.github.io/2024/06/29/01/</div>
+      <div>LC088 - 合并两个有序数组</div>
+      <div>http://tsukinai.github.io/2025/07/25/LC088/</div>
     </div>
     <div class="license-meta">
       
@@ -432,7 +501,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月29日</div>
+          <div>2025年7月25日</div>
         </div>
       
       
@@ -464,18 +533,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/27/01/" title="excel表格拆分工作簿">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">excel表格拆分工作簿</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/24/01/" title="关关难过关关过">
-                        <span class="hidden-mobile">关关难过关关过</span>
+                      <a href="/2025/07/25/LC021/" title="LC021 - 合并两个有序链表">
+                        <span class="hidden-mobile">LC021 - 合并两个有序链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

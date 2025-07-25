@@ -16,24 +16,25 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="流水账论文的事情加上这几天电脑被霸占，又是好几天没写了。不得不说论文把我之前规律的生活彻底打乱，每天的学习，吉他还有健身都中断了很久（虽然只有几天但感觉很久）。尤其是健身，稍微停练几天就有种几个月没练的感觉。前几日和高中同学出去玩桌游，本来以为会有点尴尬，没想到比我想象的好很多，感觉我在熟人面前还是放的开点。晚上还打了麻将，好久没打红中赖子杠，都有点不记得规则了。学姐来玩的时间也定下">
+    <meta name="description" content="原题将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。  示例 1：  输入：l1 &#x3D; [1,2,4], l2 &#x3D; [1,3,4] 输出：[1,1,2,3,4,4]  示例 2： 输入：l1 &#x3D; [], l2 &#x3D; [] 输出：[]  示例 3： 输入：l1 &#x3D; [], l2 &#x3D; [0] 输出：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="又一次走上正轨">
-<meta property="og:url" content="http://tsukinai.github.io/2024/06/29/01/index.html">
+<meta property="og:title" content="LC021 - 合并两个有序链表">
+<meta property="og:url" content="http://tsukinai.github.io/2025/07/25/LC021/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="流水账论文的事情加上这几天电脑被霸占，又是好几天没写了。不得不说论文把我之前规律的生活彻底打乱，每天的学习，吉他还有健身都中断了很久（虽然只有几天但感觉很久）。尤其是健身，稍微停练几天就有种几个月没练的感觉。前几日和高中同学出去玩桌游，本来以为会有点尴尬，没想到比我想象的好很多，感觉我在熟人面前还是放的开点。晚上还打了麻将，好久没打红中赖子杠，都有点不记得规则了。学姐来玩的时间也定下">
+<meta property="og:description" content="原题将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。  示例 1：  输入：l1 &#x3D; [1,2,4], l2 &#x3D; [1,3,4] 输出：[1,1,2,3,4,4]  示例 2： 输入：l1 &#x3D; [], l2 &#x3D; [] 输出：[]  示例 3： 输入：l1 &#x3D; [], l2 &#x3D; [0] 输出：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tsukinai.github.io/2024/06/29/01/1.jpg">
-<meta property="article:published_time" content="2024-06-29T14:29:55.000Z">
-<meta property="article:modified_time" content="2024-06-29T14:46:46.699Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg">
+<meta property="article:published_time" content="2025-07-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-25T08:54:21.972Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="流水账">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://tsukinai.github.io/2024/06/29/01/1.jpg">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg">
   
   
   
-  <title>又一次走上正轨 - Tsukinai</title>
+  <title>LC021 - 合并两个有序链表 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -115,10 +116,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
-</head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
 
 <body>
@@ -281,7 +279,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="又一次走上正轨"></span>
+            <span id="subtitle" data-typed-text="LC021 - 合并两个有序链表"></span>
           
         </div>
 
@@ -292,8 +290,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-29 22:29" pubdate>
-          2024年6月29日 晚上
+        <time datetime="2025-07-25 00:00" pubdate>
+          2025年7月25日 凌晨
         </time>
       </span>
     
@@ -304,7 +302,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          603 字
+          688 字
         
       </span>
     
@@ -360,20 +358,80 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">又一次走上正轨</h1>
+            <h1 id="seo-header">LC021 - 合并两个有序链表</h1>
             
             
               <div class="markdown-body">
                 
-                
-    <div id="aplayer-AxIHsxOL" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="252786" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
-    ></div>
+                <h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" srcset="/img/loading.gif" lazyload alt="示例图"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [1,2,4], l2 &#x3D; [1,3,4]
+输出：[1,1,2,3,4,4]</code></pre></div></figure>
 
-<h2 id="流水账"><a href="#流水账" class="headerlink" title="流水账"></a>流水账</h2><p>论文的事情加上这几天电脑被霸占，又是好几天没写了。不得不说论文把我之前规律的生活彻底打乱，每天的学习，吉他还有健身都中断了很久（虽然只有几天但感觉很久）。尤其是健身，稍微停练几天就有种几个月没练的感觉。前几日和高中同学出去玩桌游，本来以为会有点尴尬，没想到比我想象的好很多，感觉我在熟人面前还是放的开点。晚上还打了麻将，好久没打红中赖子杠，都有点不记得规则了。学姐来玩的时间也定下来了，5号就可以一起玩了，好耶！不过感觉最近聊天有点点尴尬的气息，我有点没话找话，感觉学姐也不是很想回，好尴尬，救命。新吉他到了，感觉好好看，而且还能直接插耳机不会扰民。吉他还能折叠，到时候带去新加坡也挺方便。这几天把房子的事情也定下来了，1300新一个月，可能还要附加一些别的，妈的好贵。</p>
-<img src="1.jpg" srcset="/img/loading.gif" lazyload alt="新吉他" width = 100% />
+<p><strong>示例 2：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [], l2 &#x3D; []
+输出：[]</code></pre></div></figure>
 
-<p>明天起就可以恢复锻炼了，不知道掉没掉力量，每次停练几天总觉得自己掉肌肉了。而且最近也没有注意饮食，晚上家里没人就点了烧烤外卖，烧烤太好吃了，可惜不健康。感觉很多事，很多细节只有当天写下来才比较详细，稍微过个一两天就不记得啥了。我的记性时好时坏，有些事情记得可清楚，有些东西却记不太清。写着写着又想起来一些细节，跟高中同学出去玩，我问我跟高中有区别吗，他们觉得我一点都没变化，我是不是应该高兴，没显老。然后跟hyw交流留学的事情，本来以为我算有计划了，她告诉我现在就要考虑工签，公司还有跟大佬social啥的，突然发现自己还是没啥计划的p人，人家这才是j人。到时候再跟她请教请教应该咋整，想到要去social就头皮发麻。哦对，好几天没学习区块链了，到时候锻炼，学习，吉他还有旅游计划齐头并进。</p>
+<p><strong>示例 3：</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [], l2 &#x3D; [0]
+输出：[0]</code></pre></div></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>两个链表的节点数目范围是 <code>[0, 50]</code></li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li><code>l1</code> 和 <code>l2</code> 均按 <strong>非递减顺序</strong> 排列</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) &#123;
+        ListNode head &#x3D; new ListNode(); &#x2F;&#x2F; 定义一个新链表存储结果
+        ListNode cur &#x3D; head;            &#x2F;&#x2F;结果链表的指针
+
+        while (list1 !&#x3D; null &amp;&amp; list2 !&#x3D; null) &#123;
+            ListNode temp &#x3D; new ListNode();
+
+            if (list1.val &lt; list2.val) &#123;
+                temp.val &#x3D; list1.val; &#x2F;&#x2F; 将小值赋值给定义的链表节点
+                list1 &#x3D; list1.next;   &#x2F;&#x2F; list1指针后移
+                cur.next &#x3D; temp;      &#x2F;&#x2F; 将节点拼接在结果链表后面
+                cur &#x3D; cur.next;       &#x2F;&#x2F; 结果链表指针后移
+            &#125; else &#123;
+                temp.val &#x3D; list2.val;
+                list2 &#x3D; list2.next;
+                cur.next &#x3D; temp;
+                cur &#x3D; cur.next;
+            &#125;
+        &#125;
+        cur.next &#x3D; list1 &#x3D;&#x3D; null ? list2 : list1; &#x2F;&#x2F; list1和list2最多只有一个不为空，将不为空的拼接在结果链表后面
+        return head.next;
+    &#125;
+&#125;</code></pre></div></figure>
+
+<p>时间复杂度：$O(m+n)$，m和n分别是两个链表的长度，每次循环添加一个节点，最多循环$m+n$次。</p>
+<p>空间复杂度：$O(1)$，常数空间存放变量。</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) &#123;
+        if (list1 &#x3D;&#x3D; null) &#123; &#x2F;&#x2F; list1为空时直接返回list2
+            return list2;
+        &#125; else if (list2 &#x3D;&#x3D; null) &#123; &#x2F;&#x2F; list2为空时直接返回list1 前两个是终止条件
+            return list1;
+        &#125; else if (list1.val &lt; list2.val) &#123; &#x2F;&#x2F; list1更小，所以合并list1.next和list2，然后拼接在list1后，返回list1
+            list1.next &#x3D; mergeTwoLists(list1.next, list2);
+            return list1;
+        &#125; else &#123; &#x2F;&#x2F; list2更小同理
+            list2.next &#x3D; mergeTwoLists(list2.next, list1);
+            return list2;
+        &#125;
+    &#125;
+&#125;</code></pre></div></figure>
+
+<p>时间复杂度：$O(m+n)$，每次递归添加一个节点，最多递归$m+n$次。</p>
+<p>空间复杂度：$O(m+n)$，递归调用 mergeTwoLists 函数时需要消耗栈空间，栈空间的大小取决于递归调用的深度。结束递归调用时 mergeTwoLists 函数最多调用$m+n$次。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>迭代的做法非常容易想到，和归并排序类似，不断将更小的节点移动到新链表中，然后向后移动指针。</p>
+<p>为什么可以用递归来做，因为可以将这个问题拆成更小的同类问题。</p>
+<p>$<br>\text{merge}(L_1, L_2) &#x3D;<br>\begin{cases}<br>L_2, &amp; \text{if } L_1 &#x3D; null \<br>L_1, &amp; \text{if } L_2 &#x3D; null \<br>L_1 + \text{merge}(L_1.\text{next}, L_2), &amp; \text{if } L_1.\text{val} &lt; L_2.\text{val} \<br>L_2 + \text{merge}(L_1, L_2.\text{next}), &amp; \text{otherwise}<br>\end{cases}<br>$</p>
+<p>当写出这样的公式的时候，就顺其自然能写出代码了。</p>
 
                 
               </div>
@@ -392,8 +450,15 @@
     
       <span class="category-chain">
         
-  <a href="/categoriesF/%E9%9A%8F%E7%AC%94/" class="category-chain-item">随笔</a>
+  <a href="/categoriesF/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="category-chain-item">力扣刷题记录</a>
   
+  
+    <span>></span>
+    
+  <a href="/categoriesF/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+
   
 
       </span>
@@ -407,7 +472,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="print-no-link">#流水账</a>
+        <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
+      
+        <a href="/tags/%E9%93%BE%E8%A1%A8/" class="print-no-link">#链表</a>
       
     </div>
   
@@ -419,8 +486,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>又一次走上正轨</div>
-      <div>http://tsukinai.github.io/2024/06/29/01/</div>
+      <div>LC021 - 合并两个有序链表</div>
+      <div>http://tsukinai.github.io/2025/07/25/LC021/</div>
     </div>
     <div class="license-meta">
       
@@ -432,7 +499,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月29日</div>
+          <div>2025年7月25日</div>
         </div>
       
       
@@ -464,9 +531,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/27/01/" title="excel表格拆分工作簿">
+                      <a href="/2025/07/25/LC088/" title="LC088 - 合并两个有序数组">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">excel表格拆分工作簿</span>
+                        <span class="hidden-mobile">LC088 - 合并两个有序数组</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -474,8 +541,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/24/01/" title="关关难过关关过">
-                        <span class="hidden-mobile">关关难过关关过</span>
+                      <a href="/2025/07/24/LC001/" title="LC001 - 两数之和">
+                        <span class="hidden-mobile">LC001 - 两数之和</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
