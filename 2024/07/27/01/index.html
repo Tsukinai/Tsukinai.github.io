@@ -16,12 +16,12 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="excel表格拆分工作簿今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。        1.打开需要拆分的工作表 2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定） 3.点击Visual Basic，弹出Visual Basic编辑器 4.">
+    <meta name="description" content="excel表格拆分工作簿 今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。     1.打开需要拆分的工作表 2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定） 3.点击Visual Basic，弹出Visual Basic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="excel表格拆分工作簿">
 <meta property="og:url" content="http://tsukinai.github.io/2024/07/27/01/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="excel表格拆分工作簿今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。        1.打开需要拆分的工作表 2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定） 3.点击Visual Basic，弹出Visual Basic编辑器 4.">
+<meta property="og:description" content="excel表格拆分工作簿 今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。     1.打开需要拆分的工作表 2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定） 3.点击Visual Basic，弹出Visual Basic">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tsukinai.github.io/2024/07/27/01/1.png">
 <meta property="og:image" content="http://tsukinai.github.io/2024/07/27/01/2.png">
@@ -363,16 +363,14 @@
             
               <div class="markdown-body">
                 
-                <h2 id="excel表格拆分工作簿"><a href="#excel表格拆分工作簿" class="headerlink" title="excel表格拆分工作簿"></a>excel表格拆分工作簿</h2><p>今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。</p>
-<img src="1.png" srcset="/img/loading.gif" lazyload width = 60% alt="图1"/>
-
-<br>
-<br>
-
-<img src="2.png" srcset="/img/loading.gif" lazyload width = 60% alt="图2"/>
-
+                <h2 id="excel表格拆分工作簿">excel表格拆分工作簿</h2>
+<p>今天遇到了这样一个使用场景，有一个excel表格，有23个工作表如图1所示。但我只需要部分工作表，我希望将表格拆分成独立的工作簿，如图2所示。</p>
+<p><img src="1.png" srcset="/img/loading.gif" lazyload width = 60% alt="图1"/></p>
+<p><br> <br></p>
+<p><img src="2.png" srcset="/img/loading.gif" lazyload width = 60% alt="图2"/></p>
 <p>1.打开需要拆分的工作表</p>
-<p>2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 - 选项 - 自定功能区，勾选开发工具并确定）</p>
+<p>2.点击功能区的开发工具栏（如果功能区没有开发工具栏，点击左上角文件 -
+选项 - 自定功能区，勾选开发工具并确定）</p>
 <p>3.点击Visual Basic，弹出Visual Basic编辑器</p>
 <p>4.点击插入，选择模块</p>
 <p>5.输入代码，点击运行键（绿色播放键）</p>
@@ -390,7 +388,6 @@ Next ss
 Application.DisplayAlerts &#x3D; True
 MsgBox &quot;工作薄拆分完毕！&quot;
 End Sub</code></pre></div></figure>
-
 <p>6.拆分的工作簿将输出到被拆分的工作表的目录下</p>
 
                 

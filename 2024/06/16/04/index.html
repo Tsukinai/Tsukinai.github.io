@@ -16,28 +16,24 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Solidity基础01Solidity官方文档深入理解Solidity — Solidity develop 文档 (solidity-cn.readthedocs.io) solidity版本&#x2F;&#x2F; 标注solidity版本 &#x2F;&#x2F; SPDX-License-Identifier: MIT &#x2F;&#x2F; ^0.8.7 代表需要大于等于0.8.7版">
+    <meta name="description" content="流水账 很久没吃过三餐了，回家这几天被迫一日三餐正常饮食，虽然基本九十点起床，但是还是得吃早餐。中午一点左右吃中饭，下午五六点吃晚饭。早上把之前看过几集的区块链公开课重新看了一遍，打算做做笔记，我也不知道能坚持多久，感觉做笔记还是有点困难的，我不太能抓住重点，全记下的话又觉得很臃肿，相当于把老师说的话抄了一遍。到时候再学学具体做笔记的方法论。 下午去健身房练背，感觉没有教练，背，肩始终还是不太">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chainlink公开课笔记1">
-<meta property="og:url" content="http://tsukinai.github.io/2024/06/18/20240618-02/index.html">
+<meta property="og:title" content="开启一段新生活？">
+<meta property="og:url" content="http://tsukinai.github.io/2024/06/16/04/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="Solidity基础01Solidity官方文档深入理解Solidity — Solidity develop 文档 (solidity-cn.readthedocs.io) solidity版本&#x2F;&#x2F; 标注solidity版本 &#x2F;&#x2F; SPDX-License-Identifier: MIT &#x2F;&#x2F; ^0.8.7 代表需要大于等于0.8.7版">
+<meta property="og:description" content="流水账 很久没吃过三餐了，回家这几天被迫一日三餐正常饮食，虽然基本九十点起床，但是还是得吃早餐。中午一点左右吃中饭，下午五六点吃晚饭。早上把之前看过几集的区块链公开课重新看了一遍，打算做做笔记，我也不知道能坚持多久，感觉做笔记还是有点困难的，我不太能抓住重点，全记下的话又觉得很臃肿，相当于把老师说的话抄了一遍。到时候再学学具体做笔记的方法论。 下午去健身房练背，感觉没有教练，背，肩始终还是不太">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/1.png">
-<meta property="og:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/2.png">
-<meta property="og:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/3.png">
-<meta property="article:published_time" content="2024-06-18T13:53:12.000Z">
-<meta property="article:modified_time" content="2024-06-18T17:44:59.759Z">
+<meta property="article:published_time" content="2024-06-16T10:54:11.000Z">
+<meta property="article:modified_time" content="2024-06-18T14:12:54.311Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="区块链">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="Chainlink公开课">
+<meta property="article:tag" content="锻炼">
+<meta property="article:tag" content="流水账">
+<meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://tsukinai.github.io/2024/06/18/20240618-02/1.png">
   
   
   
-  <title>Chainlink公开课笔记1 - Tsukinai</title>
+  <title>开启一段新生活？ - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -282,7 +278,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Chainlink公开课笔记1"></span>
+            <span id="subtitle" data-typed-text="开启一段新生活？"></span>
           
         </div>
 
@@ -293,8 +289,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-18 21:53" pubdate>
-          2024年6月18日 晚上
+        <time datetime="2024-06-16 18:54" pubdate>
+          2024年6月16日 晚上
         </time>
       </span>
     
@@ -305,7 +301,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          658 字
         
       </span>
     
@@ -316,7 +312,7 @@
         
         
         
-          13 分钟
+          6 分钟
         
       </span>
     
@@ -361,112 +357,48 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Chainlink公开课笔记1</h1>
+            <h1 id="seo-header">开启一段新生活？</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Solidity基础01"><a href="#Solidity基础01" class="headerlink" title="Solidity基础01"></a>Solidity基础01</h1><h2 id="Solidity官方文档"><a href="#Solidity官方文档" class="headerlink" title="Solidity官方文档"></a>Solidity官方文档</h2><p><a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/solidity-in-depth.html">深入理解Solidity — Solidity develop 文档 (solidity-cn.readthedocs.io)</a></p>
-<h2 id="solidity版本"><a href="#solidity版本" class="headerlink" title="solidity版本"></a>solidity版本</h2><figure><div class="code-wrapper"><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">&#x2F;&#x2F; 标注solidity版本
-&#x2F;&#x2F; SPDX-License-Identifier: MIT
-&#x2F;&#x2F; ^0.8.7 代表需要大于等于0.8.7版本
-&#x2F;&#x2F; 只有0.8.26代表只能使用0.8.26版本
-&#x2F;&#x2F; 可以用大于小于号指定版本范围
-&#x2F;&#x2F; eg. pragma solidity &gt;&#x3D;0.8.1 &lt;0.9.1
-pragma solidity ^0.8.26;</code></pre></div></figure>
-
-<h2 id="solidity基础数据类型"><a href="#solidity基础数据类型" class="headerlink" title="solidity基础数据类型"></a>solidity基础数据类型</h2><p>基础的数据类型：bool，uint，int，address</p>
-<p><code>bool</code> ：可能的取值为字面常数值 <code>true</code> 和 <code>false</code> 。</p>
-<p><code>int</code> &#x2F; <code>uint</code> ：分别表示有符号和无符号的不同位数的整型变量。 支持关键字 <code>uint8</code> 到 <code>uint256</code> （无符号，从 8 位到 256 位）以及 <code>int8</code> 到 <code>int256</code>，以 <code>8</code> 位为步长递增。 <code>uint</code> 和 <code>int</code> 分别是 <code>uint256</code> 和 <code>int256</code> 的别名。</p>
-<p><code>address</code>：地址类型存储一个 20 字节的值（以太坊地址的大小）。 地址类型也有成员变量，并作为所有合约的基础。</p>
-<p><code>bytes</code>:变长字节数组。</p>
-<p><code>string</code>:变长 UTF-8 编码字符串类型。也是一种<code>bytes</code>，但是只能存储文本。</p>
-<h2 id="solidity函数"><a href="#solidity函数" class="headerlink" title="solidity函数"></a>solidity函数</h2><p>每个合约都有一个地址，就像每个账户都有地址一样。在部署后可以在终端看见部署细节，比如状态，交易哈希等等。部署一个合约相当于就是发送一个交易，在区块链做任何事，修改任何状态，就是在发一个交易。部署了一个合约就修改了区块链，让链上拥有这个合约。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">contract SimpleStorage&#123;
-    &#x2F;&#x2F; 会以0来初始化变量，如果没有赋值
-    &#x2F;&#x2F; 加上public才能看到变量
-    uint256 public favoriteNumber;
-    &#x2F;&#x2F; uint256 favoriteNumber;
-    function store(uint256 _favoriteNumber) public &#123;
-        favoriteNumber &#x3D; _favoriteNumber;
-        &#x2F;&#x2F; 增加操作，使得函数更复杂
-        &#x2F;&#x2F; favoriteNumber +&#x3D; 1;
-        &#x2F;&#x2F; 调用view函数是免费的，除非在消耗gas的函数中调用，因此此处gas会增加
-        &#x2F;&#x2F; retrieve();
-    &#125;
-    
-    &#x2F;&#x2F; view，pure函数类型
-    &#x2F;&#x2F; 在合约区显示为蓝色，不消耗gas
-    function retrieve() public view returns(uint256)&#123;
-    	return favoriteNumber;
-    &#125;
-    
-    function add() public pure returns(uint256)&#123;
-    	return(1+1);
-    &#125;
-&#125;</code></pre></div></figure>
-
-<p>在部署合约区中，往框里输入114514，然后点击store，可以看到发了另一笔交易，在_favoriteNumber中存储了114514。但是无法知道favoriteNumber是否产生相应改变，因为favoriteNumber没有加修饰符public，加上后可以在部署合约区查看。<img src="1.png" srcset="/img/loading.gif" lazyload alt="第一次传入变量" width = 100% /><img src="2.png" srcset="/img/loading.gif" lazyload alt="第二笔交易" width = 100% /><img src="3.png" srcset="/img/loading.gif" lazyload alt="查看变量" width = 100% /></p>
-<p>在函数中增加操作，使函数更加复杂，这个函数消耗的计算量更多，执行交易消耗的gas也会更多。</p>
-<p>定义solidity函数的语法：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">function functionName(type param1, type param2, ...) public&#x2F;external&#x2F;internal&#x2F;private returns (type1 returnVar1, type2 returnVar2,...) &#123;
-    &#x2F;&#x2F; 函数体
-&#125;</code></pre></div></figure>
-
-<ul>
-<li><code>function</code>：这是声明一个新函数所必需的关键字。</li>
-<li><code>functionName</code>：这就是你给你的函数起名字。</li>
-<li><code>type param1, type param2,...</code>： 这些就是输入参数和它们对应类型。如果没有参数，那么括号内为空。</li>
-<li><code>public/external/internal/private</code>: 这些关键词定义了访问控制类型，决定了哪些其他合约或者账户可以调用该函数。<ul>
-<li>public: 任何人都能调用此类方法</li>
-<li>external: 只有外部账户和其他合约才能调用此类方法</li>
-<li>internal: 只有当前智能合同或者从当前智能合同继承来得到新创建得到智能合同才可访问此类方法</li>
-<li>private: 只有当前智能协议内部可访问此类方法</li>
-</ul>
-</li>
-<li><code>returns (type returnVar1,...)</code>: 如果一个函数需要返回结果，那么需要使用returns关键字，后面跟着返回值的类型和变量名。</li>
-</ul>
-<h3 id="View-函数"><a href="#View-函数" class="headerlink" title="View 函数"></a>View 函数</h3><p>可以将函数声明为 <code>view</code> 类型，这种情况下要保证不修改状态。</p>
-<p>下面的语句被认为是修改状态：</p>
-<ol>
-<li>修改状态变量。</li>
-<li><a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/contracts.html#events">产生事件</a>。</li>
-<li><a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/control-structures.html#creating-contracts">创建其它合约</a>。</li>
-<li>使用 <code>selfdestruct</code>。</li>
-<li>通过调用发送以太币。</li>
-<li>调用任何没有标记为 <code>view</code> 或者 <code>pure</code> 的函数。</li>
-<li>使用低级调用。</li>
-<li>使用包含特定操作码的内联汇编。</li>
-</ol>
-<blockquote>
-<p>注解</p>
-<p><code>constant</code> 是 <code>view</code> 的别名</p>
-<p>Getter 方法被标记为 <code>view</code>。</p>
-</blockquote>
-<p><font color=red>警告：编译器没有强制 <code>view</code> 方法不能修改状态。</font></p>
-<h3 id="Pure-函数"><a href="#Pure-函数" class="headerlink" title="Pure 函数"></a>Pure 函数</h3><p>函数可以声明为 <code>pure</code> ，在这种情况下，承诺不读取或修改状态。</p>
-<p>除了上面解释的状态修改语句列表之外，以下被认为是从状态中读取：</p>
-<ol>
-<li>读取状态变量。</li>
-<li>访问 <code>this.balance</code> 或者 <code>&lt;address&gt;.balance</code>。</li>
-<li>访问 <code>block</code>，<code>tx</code>， <code>msg</code> 中任意成员 （除 <code>msg.sig</code> 和 <code>msg.data</code> 之外）。</li>
-<li>调用任何未标记为 <code>pure</code> 的函数。</li>
-<li>使用包含某些操作码的内联汇编。</li>
-</ol>
-<p><font color=red>警告：编译器没有强制 <code>pure</code> 方法不能读取状态。</font></p>
-<h2 id="可见性标识符"><a href="#可见性标识符" class="headerlink" title="可见性标识符"></a>可见性标识符</h2><p>函数和状态变量有四种可见性类型。 函数可以指定为 <code>external</code> ，<code>public</code> ，<code>internal</code> 或者 <code>private</code>，默认情况下函数类型为 <code>public</code>。 对于状态变量，不能设置为 <code>external</code> ，默认是 <code>internal</code> 。</p>
-<p><code>external</code> ：</p>
-<p>外部函数作为合约接口的一部分，意味着我们可以从其他合约和交易中调用。 一个外部函数 <code>f</code> 不能从内部调用（即 <code>f</code> 不起作用，但 <code>this.f()</code> 可以）。 当收到大量数据的时候，外部函数有时候会更有效率。</p>
-<p><code>public</code> ：</p>
-<p>public 函数是合约接口的一部分，可以在内部或通过消息调用。对于公共状态变量， 会自动生成一个 getter 函数。</p>
-<p><code>internal</code> ：</p>
-<p>这些函数和状态变量只能是内部访问（即从当前合约内部或从它派生的合约访问），不使用 <code>this</code> 调用。</p>
-<p><code>private</code> ：</p>
-<p>private 函数和状态变量仅在当前定义它们的合约中使用，并且不能被派生合约使用。</p>
-<blockquote>
-<p>注解</p>
-<p>合约中的所有内容对外部观察者都是可见的。设置一些 <code>private</code> 类型只能阻止其他合约访问和修改这些信息， 但是对于区块链外的整个世界它仍然是可见的。</p>
-</blockquote>
+                <h2 id="流水账">流水账</h2>
+<p>很久没吃过三餐了，回家这几天被迫一日三餐正常饮食，虽然基本九十点起床，但是还是得吃早餐。中午一点左右吃中饭，下午五六点吃晚饭。早上把之前看过几集的区块链公开课重新看了一遍，打算做做笔记，我也不知道能坚持多久，感觉做笔记还是有点困难的，我不太能抓住重点，全记下的话又觉得很臃肿，相当于把老师说的话抄了一遍。到时候再学学具体做笔记的方法论。</p>
+<p>下午去健身房练背，感觉没有教练，背，肩始终还是不太会练，不太确定动作是否标准，发力到不到位。健身房的杠铃杆有些生锈，我的手套已经沾上锈了。不过今天有氧整了半小时，比昨天强多了。不过感觉爬坡的时候右腿的小腿肌肉酸的厉害，估计是太久没做有氧导致的吧。我也不知道无氧后的有氧有没有用，听说无氧能消耗糖原，再去做有氧就能消耗脂肪了，希望如此吧，低体脂确实好看。突然想起来今天做引体做的真费劲，在寝室的杠子能做2-3个，今天在健身房一个自由引体都拉不起，可能是在这之前做了高位下拉，有点力竭了吧。不知道啥时候自由引体能做组，估计那个时候背部肌肉就很明显了吧。</p>
+<p>练完开车送我妈去超市，路上提了一嘴吉他钢琴什么的，我妈直接就给我安排老师了，她的人脉是真的丰富，我佩服的五体投地。路上开着车，听着歌，感觉每天学习一下，锻炼身体，再学点乐器，玩玩游戏，过的挺充实的。以前有点抑郁，找不到任何生活的乐趣，现在充实一点感觉人好多了，尤其是健身能分泌多巴胺。希望我能坚持下去，不过健身我都坚持下来了，感觉坚持别的这些应该也挺简单？毕竟挺快乐的，不是被强迫的，突然感觉这才是生活。</p>
+<h2 id="画饼">画饼</h2>
+<p>这几天接触博客，很想加入播放器插件，到时候研究一下aplayer，安排一下。</p>
+<h2 id="锻炼">锻炼</h2>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>容量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高位下拉</td>
+<td>4片 12次4组</td>
+</tr>
+<tr>
+<td>器械划船</td>
+<td>39kg 8次4组</td>
+</tr>
+<tr>
+<td>杠铃划船</td>
+<td>30kg 12次4组</td>
+</tr>
+<tr>
+<td>器械引体</td>
+<td>4次5组（太弱了）</td>
+</tr>
+<tr>
+<td>爬坡</td>
+<td>坡度15 速度4 30min</td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -485,7 +417,7 @@ pragma solidity ^0.8.26;</code></pre></div></figure>
     
       <span class="category-chain">
         
-  <a href="/categoriesF/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  <a href="/categoriesF/%E9%9A%8F%E7%AC%94/" class="category-chain-item">随笔</a>
   
   
 
@@ -500,11 +432,11 @@ pragma solidity ^0.8.26;</code></pre></div></figure>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="print-no-link">#区块链</a>
+        <a href="/tags/%E9%94%BB%E7%82%BC/" class="print-no-link">#锻炼</a>
       
-        <a href="/tags/%E4%BB%A3%E7%A0%81/" class="print-no-link">#代码</a>
+        <a href="/tags/%E6%B5%81%E6%B0%B4%E8%B4%A6/" class="print-no-link">#流水账</a>
       
-        <a href="/tags/Chainlink%E5%85%AC%E5%BC%80%E8%AF%BE/" class="print-no-link">#Chainlink公开课</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0/" class="print-no-link">#学习</a>
       
     </div>
   
@@ -516,8 +448,8 @@ pragma solidity ^0.8.26;</code></pre></div></figure>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Chainlink公开课笔记1</div>
-      <div>http://tsukinai.github.io/2024/06/18/20240618-02/</div>
+      <div>开启一段新生活？</div>
+      <div>http://tsukinai.github.io/2024/06/16/04/</div>
     </div>
     <div class="license-meta">
       
@@ -529,7 +461,7 @@ pragma solidity ^0.8.26;</code></pre></div></figure>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月18日</div>
+          <div>2024年6月16日</div>
         </div>
       
       
@@ -561,9 +493,9 @@ pragma solidity ^0.8.26;</code></pre></div></figure>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/24/01/" title="关关难过关关过">
+                      <a href="/2024/06/17/01/" title="神佛道愁莫渡江 六根清净涤得空">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">关关难过关关过</span>
+                        <span class="hidden-mobile">神佛道愁莫渡江 六根清净涤得空</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -571,8 +503,8 @@ pragma solidity ^0.8.26;</code></pre></div></figure>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/18/20240618-01/" title="I love you more than you&#39;ll ever know">
-                        <span class="hidden-mobile">I love you more than you&#39;ll ever know</span>
+                      <a href="/2024/06/16/03/" title="北京大学肖臻老师《区块链技术与应用》公开课笔记2">
+                        <span class="hidden-mobile">北京大学肖臻老师《区块链技术与应用》公开课笔记2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
