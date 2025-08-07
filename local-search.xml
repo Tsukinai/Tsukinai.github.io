@@ -4,6 +4,138 @@
   
   
   <entry>
+    <title>LC141 - 环形链表</title>
+    <link href="/2025/08/07/LC141/"/>
+    <url>/2025/08/07/LC141/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题">原题</h2><p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p><p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code>指针再次到达，则链表中存在环。为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code>来表示链表尾连接到链表中的位置（索引从 0开始）。<strong>注意：<code>pos</code> 不作为参数进行传递</strong>。仅仅是为了标识链表的实际情况。</p><p><em>如果链表中存在环</em> ，则返回 <code>true</code> 。 否则，返回<code>false</code> 。</p><p><strong>示例 1：</strong></p><figure><imgsrc="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1输出：true解释：链表中有一个环，其尾部连接到第二个节点。</code></pre></div></figure><p><strong>示例 2：</strong></p><figure><imgsrc="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2], pos &#x3D; 0输出：true解释：链表中有一个环，其尾部连接到第一个节点。</code></pre></div></figure><p><strong>示例 3：</strong></p><figure><imgsrc="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1], pos &#x3D; -1输出：false解释：链表中没有环。</code></pre></div></figure><p><strong>提示：</strong></p><ul><li>链表中节点的数目范围是 <code>[0, 104]</code></li><li><code>-105 &lt;= Node.val &lt;= 105</code></li><li><code>pos</code> 为 <code>-1</code> 或者链表中的一个<strong>有效索引</strong> 。</li></ul><p><strong>进阶：</strong>你能用<code>O(1)</code>（即，常量）内存解决此问题吗？</p><h2 id="题解">题解</h2><h3 id="floyd算法">Floyd算法</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;    public boolean hasCycle(ListNode head) &#123;        if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) return false;        ListNode quick &#x3D; head.next;        ListNode slow &#x3D; head;        while (quick !&#x3D; slow) &#123;            &#x2F;&#x2F; 由于快指针肯定在慢指针前面，所以只用快指针作为条件            if (quick &#x3D;&#x3D; null || quick.next &#x3D;&#x3D; null) &#123;                return false;            &#125;            quick &#x3D; quick.next.next;            slow &#x3D; slow.next;        &#125;        return true;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span> 是链表中的节点数。</p><p>当链表中不存在环时，快指针将先于慢指针到达链表尾部，链表中每个节点至多被访问两次。</p><p>当链表中存在环时，每一轮移动后，快慢指针的距离将减小一。而初始距离为环的长度，因此至多移动<span class="math inline"><em>n</em></span> 轮。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(1)</span>。我们只使用了两个指针的额外空间。</p><h3 id="哈希表">哈希表</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;    public boolean hasCycle(ListNode head) &#123;        Set&lt;ListNode&gt; seen &#x3D; new HashSet&lt;ListNode&gt;();        while (head !&#x3D; null) &#123;            &#x2F;&#x2F; 如果重复则有环            if (!seen.add(head)) &#123;                return true;            &#125;            head &#x3D; head.next;        &#125;        return false;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是链表中的节点数。最坏情况下我们需要遍历每个节点一次。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是链表中的节点数。主要为哈希表的开销，最坏情况下我们需要将每个节点插入到哈希表中一次。</p><h2 id="总结">总结</h2><p>判断链表是否有环最经典的就是Floyd算法，利用快慢指针，如果有环那么快指针会追上慢指针，否则快指针会第一个指向null。</p><p>哈希表的方法也很好理解，不断添加节点到哈希表中，如果添加失败说明有重复的，有环。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>Classic150</category>
+      
+      <category>简单</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>简单</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LC206 - 反转链表</title>
+    <link href="/2025/08/06/LC206/"/>
+    <url>/2025/08/06/LC206/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题">原题</h2><p>给你单链表的头节点 <code>head</code>，请你反转链表，并返回反转后的链表。</p><p><strong>示例 1：</strong></p><figure><img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]</code></pre></div></figure><p><strong>示例 2：</strong></p><figure><img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2]输出：[2,1]</code></pre></div></figure><p><strong>示例 3：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; []输出：[]</code></pre></div></figure><p><strong>提示：</strong></p><ul><li>链表中节点的数目范围是 <code>[0, 5000]</code></li><li><code>-5000 &lt;= Node.val &lt;= 5000</code></li></ul><p><strong>进阶：</strong>链表可以选用迭代或递归方式完成反转。你能否用两种方法解决这道题？</p><h2 id="题解">题解</h2><h3 id="初始错误解法">初始错误解法❌</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public ListNode reverseList(ListNode head) &#123;        ListNode pre&#x3D;head;        ListNode cur&#x3D;pre.next;        while(cur!&#x3D;null)&#123;            ListNode temp&#x3D;cur.next;            cur.next&#x3D;pre;            pre&#x3D;cur;            cur&#x3D;temp;        &#125;        return pre;    &#125;&#125;</code></pre></div></figure><p>心路历程：头节点不需要反转，那么应该从头节点的下一个节点开始反转。</p><p>错误点：</p><ol type="1"><li>没有断尾：原始的head依然指向head.next，反转后的链表在末尾形成了环。（e.g原始链表 1 → 2 → 3 → null，按这种反转后3 → 2 → 1 → 2循环）</li><li>没有处理空链表：cur=head.next，head可能为空。</li></ol><h3 id="错误解法改正">错误解法改正</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public ListNode reverseList(ListNode head) &#123;    if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) return head;    ListNode pre &#x3D; head;    ListNode cur &#x3D; pre.next;    pre.next &#x3D; null; &#x2F;&#x2F; 必须断尾！！    while (cur !&#x3D; null) &#123;        ListNode temp &#x3D; cur.next;        cur.next &#x3D; pre;        pre &#x3D; cur;        cur &#x3D; temp;    &#125;    return pre;&#125;</code></pre></div></figure><h3 id="迭代解法">迭代解法</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public ListNode reverseList(ListNode head) &#123;        &#x2F;&#x2F; 定义pre为null，使得head节点指向null        ListNode pre&#x3D;null;        ListNode cur&#x3D;head;                while(cur!&#x3D;null)&#123;            ListNode next&#x3D;cur.next;            cur.next&#x3D;pre;            pre&#x3D;cur;            cur&#x3D;next;        &#125;                &#x2F;&#x2F; 如果cur为空节点，返回值也是null        &#x2F;&#x2F; 如果cur非空，pre节点将是反转后链表的末尾节点，此时cur指向空        return pre;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是链表的长度。需要遍历链表一次。</p><p>空间复杂度：<span class="math inline"><em>O</em>(1)</span>。</p><h3 id="递归解法">递归解法</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public ListNode reverseList(ListNode head) &#123;        if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) &#123;            return head;        &#125;        ListNode newHead &#x3D; reverseList(head.next);        head.next.next &#x3D; head;        head.next &#x3D; null;        return newHead;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是链表的长度。需要对链表的每个节点进行反转操作。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是链表的长度。空间复杂度主要取决于递归调用的栈空间，最多为 <spanclass="math inline"><em>n</em></span> 层。</p><h2 id="总结">总结</h2><p>递归解法暂时想不明白，先列在这里。</p><p>迭代解法在自己思考的时候整体思路还算正确，但是忽略了头节点需要指向null，导致链表最后成环。而且以null为初始pre节点，head为初始cur节点整个流程就完全没问题。错误想法中只想到最开始要head.next指向head，所以也没有考虑head为null的情况。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>Classic150</category>
+      
+      <category>简单</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>简单</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LC035 - 搜索插入位置</title>
+    <link href="/2025/08/06/LC035/"/>
+    <url>/2025/08/06/LC035/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题">原题</h2><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p><p>请必须使用时间复杂度为 <code>O(log n)</code> 的算法。</p><p><strong>示例 1:</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: nums &#x3D; [1,3,5,6], target &#x3D; 5输出: 2</code></pre></div></figure><p><strong>示例 2:</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: nums &#x3D; [1,3,5,6], target &#x3D; 2输出: 1</code></pre></div></figure><p><strong>示例 3:</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: nums &#x3D; [1,3,5,6], target &#x3D; 7输出: 4</code></pre></div></figure><p><strong>提示:</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 104</code></li><li><code>-104 &lt;= nums[i] &lt;= 104</code></li><li><code>nums</code> 为 <strong>无重复元素</strong> 的<strong>升序</strong> 排列数组</li><li><code>-104 &lt;= target &lt;= 104</code></li></ul><h2 id="题解">题解</h2><h3 id="二分查找">二分查找</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int searchInsert(int[] nums, int target) &#123;        &#x2F;&#x2F; 二分查找 左右采用闭区间[left,right]        int left &#x3D; 0;        int right &#x3D; nums.length - 1;        &#x2F;&#x2F; 循环边界条件有等于号        while (left &lt;&#x3D; right) &#123;            int mid &#x3D; left + (right - left) &#x2F; 2; &#x2F;&#x2F; (left+right) &#x2F; 2 可能会整型溢出            if (target &gt; nums[mid]) &#123;                left &#x3D; mid + 1;                  &#x2F;&#x2F; 左边界更新为mid+1            &#125; else if (target &lt; nums[mid]) &#123;                right &#x3D; mid - 1;                 &#x2F;&#x2F; 右边界更新为mid-1            &#125; else &#123;                return mid;            &#125;        &#125;        &#x2F;&#x2F; 二分查找返回left        return left;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>l</em><em>o</em><em>g</em><em>n</em>)</span>，其中<span class="math inline"><em>n</em></span>为数组的长度。二分查找所需的时间复杂度为 <spanclass="math inline"><em>O</em>(<em>l</em><em>o</em><em>g</em><em>n</em>)</span>。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(1)</span>。我们只需要常数空间存放若干变量。</p><h2 id="总结">总结</h2><p>二分查找的难点在于边界条件的选取，这里我选择了最符合直觉的。左右采用闭区间<spanclass="math inline">[<em>l</em><em>e</em><em>f</em><em>t</em>, <em>r</em><em>i</em><em>g</em><em>h</em><em>t</em>]</span>，此时循环的边界条件一定要有等于号，直觉上可以理解为闭区间是可以<spanclass="math inline"><em>l</em><em>e</em><em>f</em><em>t</em> = <em>r</em><em>i</em><em>g</em><em>h</em><em>t</em></span>的。同时左右边界的更新也比较符合直觉，大于<spanclass="math inline"><em>m</em><em>i</em><em>d</em></span>则更新左边界为<spanclass="math inline"><em>m</em><em>i</em><em>d</em> + 1</span>，小于<spanclass="math inline"><em>m</em><em>i</em><em>d</em></span>则更新右边界为<spanclass="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最后的返回值是left不太符合直觉，直接记住就好，接下来放两个二分查找的模板参考：</p><h3 id="闭区间">闭区间</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int searchInsert(int[] nums, int target) &#123;        int left &#x3D; 0, right &#x3D; nums.length - 1; &#x2F;&#x2F; 注意                while(left &lt;&#x3D; right) &#123; &#x2F;&#x2F; 注意            int mid &#x3D; (left + right) &#x2F; 2; &#x2F;&#x2F; 注意                    if(nums[mid] &#x3D;&#x3D; target) &#123; &#x2F;&#x2F; 注意                &#x2F;&#x2F; 相关逻辑            &#125; else if(nums[mid] &lt; target) &#123;                left &#x3D; mid + 1; &#x2F;&#x2F; 注意            &#125; else &#123;                right &#x3D; mid - 1; &#x2F;&#x2F; 注意            &#125;        &#125;        &#x2F;&#x2F; 相关返回值        return left;    &#125;&#125;</code></pre></div></figure><h3 id="开区间">开区间</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int searchInsert(int[] nums, int target) &#123;        int left &#x3D; 0, right &#x3D; nums.length; &#x2F;&#x2F; 注意                while(left &lt; right) &#123; &#x2F;&#x2F; 注意            int mid &#x3D; (left + right) &#x2F; 2; &#x2F;&#x2F; 注意            if(nums[mid] &#x3D;&#x3D; target) &#123;                &#x2F;&#x2F; 相关逻辑            &#125; else if(nums[mid] &lt; target) &#123;                left &#x3D; mid + 1; &#x2F;&#x2F; 注意            &#125; else &#123;                right &#x3D; mid; &#x2F;&#x2F; 注意            &#125;        &#125;        &#x2F;&#x2F; 相关返回值        return left;    &#125;&#125;</code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>Classic150</category>
+      
+      <category>简单</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>简单</tag>
+      
+      <tag>二分查找</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LC002 - 两数相加</title>
+    <link href="/2025/08/06/LC002/"/>
+    <url>/2025/08/06/LC002/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题">原题</h2><p>给你两个 <strong>非空</strong>的链表，表示两个非负的整数。它们每位数字都是按照 <strong>逆序</strong>的方式存储的，并且每个节点只能存储 <strong>一位</strong> 数字。</p><p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p><p>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p><p><strong>示例 1：</strong></p><figure><imgsrc="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/02/addtwonumber1.jpg"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]输出：[7,0,8]解释：342 + 465 &#x3D; 807.</code></pre></div></figure><p><strong>示例 2：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [0], l2 &#x3D; [0]输出：[0]</code></pre></div></figure><p><strong>示例 3：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [9,9,9,9,9,9,9], l2 &#x3D; [9,9,9,9]输出：[8,9,9,9,0,0,0,1]</code></pre></div></figure><p><strong>提示：</strong></p><ul><li>每个链表中的节点数在范围 <code>[1, 100]</code> 内</li><li><code>0 &lt;= Node.val &lt;= 9</code></li><li>题目数据保证列表表示的数字不含前导零</li></ul><h2 id="题解">题解</h2><h3id="自己的解法遍历到某一个链表为空">自己的解法（遍历到某一个链表为空）</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;        &#x2F;&#x2F; 定义结果链表        ListNode head &#x3D; new ListNode();        ListNode cur &#x3D; head;        &#x2F;&#x2F; 进位为全局变量        int carry &#x3D; 0;        &#x2F;&#x2F; 循环终止条件为l1或l2为空        while (l1 !&#x3D; null &amp;&amp; l2 !&#x3D; null) &#123;            ListNode temp &#x3D; new ListNode();            int sum &#x3D; l1.val + l2.val + carry;            temp.val &#x3D; sum % 10;            carry &#x3D; sum &#x2F; 10;            l1 &#x3D; l1.next;            l2 &#x3D; l2.next;            cur.next &#x3D; temp;            cur &#x3D; cur.next;        &#125;        &#x2F;&#x2F; 如果l2为空，l1还有结点        while (l1 !&#x3D; null) &#123;            int sum &#x3D; l1.val + carry;            l1.val &#x3D; sum % 10;            carry &#x3D; sum &#x2F; 10;            cur.next &#x3D; l1;            cur &#x3D; cur.next;            l1 &#x3D; l1.next;        &#125;        &#x2F;&#x2F; 如果l1为空，l2还有结点        while (l2 !&#x3D; null) &#123;            int sum &#x3D; l2.val + carry;            l2.val &#x3D; sum % 10;            carry &#x3D; sum &#x2F; 10;            cur.next &#x3D; l2;            cur &#x3D; cur.next;            l2 &#x3D; l2.next;        &#125;        &#x2F;&#x2F; 如果最后还有进位        if (carry &#x3D;&#x3D; 1) &#123;            cur.next &#x3D; new ListNode(1);        &#125;        return head.next;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：时间复杂度：<spanclass="math inline"><em>O</em>(<em>m</em><em>a</em><em>x</em>(<em>m</em>, <em>n</em>))</span>，<span class="math inline"><em>m</em></span> 和 <spanclass="math inline"><em>n</em></span>分别为两个链表的长度循环的次数为最长的链表长度。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(1)</span>，只用了少量常量级变量。</p><h3 id="官方解法遍历到所有链表为空">官方解法（遍历到所有链表为空）</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;        ListNode head &#x3D; new ListNode();        ListNode cur &#x3D; head;        int carry &#x3D; 0;        &#x2F;&#x2F; 循环终止条件为l1和l2都为空        while (l1 !&#x3D; null || l2 !&#x3D; null) &#123;            &#x2F;&#x2F; 如果l1或l2为空则置为0            int x &#x3D; l1 &#x3D;&#x3D; null ? 0 : l1.val;            int y &#x3D; l2 &#x3D;&#x3D; null ? 0 : l2.val;            int sum &#x3D; x + y + carry;            carry &#x3D; sum &#x2F; 10;            ListNode temp &#x3D; new ListNode(sum % 10);            cur.next &#x3D; temp;            cur &#x3D; cur.next;            &#x2F;&#x2F; 如果链表不为空则指针后移            if (l1 !&#x3D; null) &#123;                l1 &#x3D; l1.next;            &#125;            if (l2 !&#x3D; null) &#123;                l2 &#x3D; l2.next            &#125;        &#125;        &#x2F;&#x2F; 如果最后还有进位则新建一个节点        if (carry &gt; 0) &#123;            cur.next &#x3D; new ListNode(carry);        &#125;        return head.next;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：时间复杂度：<spanclass="math inline"><em>O</em>(<em>m</em><em>a</em><em>x</em>(<em>m</em>, <em>n</em>))</span>，<span class="math inline"><em>m</em></span> 和 <spanclass="math inline"><em>n</em></span>分别为两个链表的长度循环的次数为最长的链表长度。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(1)</span>，只用了少量常量级变量。</p><h2 id="总结">总结</h2><p>虽然两种方法时间和空间复杂度相同，但是自己的解法使用了较多循环，而且很明显，后面两个循环的逻辑和最开始的循环逻辑相同。官方解法利用假如为空则置0，使得遍历两个链表只需要在一个循环中就可以，同时又一次运用了三元运算符节省代码量。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>Classic150</category>
+      
+      <category>中等</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>链表</tag>
+      
+      <tag>中等</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LC021 - 合并两个有序链表</title>
     <link href="/2025/07/25/LC021/"/>
     <url>/2025/07/25/LC021/</url>
