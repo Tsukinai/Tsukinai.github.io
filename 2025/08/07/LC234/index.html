@@ -16,23 +16,25 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题 35. 搜索插入位置 - 力扣（LeetCode） 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间复杂度为 O(log n) 的算法。 示例 1: 输入: nums &#x3D; [1,3,5,6], target &#x3D; 5 输出: 2 示例 2: 输入: nums &#x3D;">
+    <meta name="description" content="原题 234. 回文链表 - 力扣（LeetCode） 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。 示例 1：   img  输入：head &#x3D; [1,2,2,1] 输出：true 示例 2：   img  输入：head &#x3D; [1,2] 输出：false 提示：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC035 - 搜索插入位置">
-<meta property="og:url" content="http://tsukinai.github.io/2025/08/06/LC035/index.html">
+<meta property="og:title" content="LC234">
+<meta property="og:url" content="http://tsukinai.github.io/2025/08/07/LC234/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="原题 35. 搜索插入位置 - 力扣（LeetCode） 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 请必须使用时间复杂度为 O(log n) 的算法。 示例 1: 输入: nums &#x3D; [1,3,5,6], target &#x3D; 5 输出: 2 示例 2: 输入: nums &#x3D;">
+<meta property="og:description" content="原题 234. 回文链表 - 力扣（LeetCode） 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。 示例 1：   img  输入：head &#x3D; [1,2,2,1] 输出：true 示例 2：   img  输入：head &#x3D; [1,2] 输出：false 提示：">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-06T12:48:41.000Z">
-<meta property="article:modified_time" content="2025-08-07T13:44:19.002Z">
+<meta property="article:published_time" content="2025-08-07T13:52:12.000Z">
+<meta property="article:modified_time" content="2025-08-07T14:16:56.635Z">
 <meta property="article:author" content="Tsukinai">
 <meta property="article:tag" content="简单">
-<meta property="article:tag" content="二分查找">
+<meta property="article:tag" content="链表">
+<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="快慢指针">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LC035 - 搜索插入位置 - Tsukinai</title>
+  <title>LC234 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -277,7 +279,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC035 - 搜索插入位置"></span>
+            <span id="subtitle" data-typed-text="LC234"></span>
           
         </div>
 
@@ -288,8 +290,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-06 20:48" pubdate>
-          2025年8月6日 晚上
+        <time datetime="2025-08-07 21:52" pubdate>
+          2025年8月7日 晚上
         </time>
       </span>
     
@@ -300,7 +302,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          681 字
+          802 字
         
       </span>
     
@@ -311,7 +313,7 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -356,110 +358,172 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LC035 - 搜索插入位置</h1>
+            <h1 id="seo-header">LC234</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="原题">原题</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-insert-position/">35.
-搜索插入位置 - 力扣（LeetCode）</a></p>
-<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>请必须使用时间复杂度为 <code>O(log n)</code> 的算法。</p>
-<p><strong>示例 1:</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: nums &#x3D; [1,3,5,6], target &#x3D; 5
-输出: 2</code></pre></div></figure>
-<p><strong>示例 2:</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: nums &#x3D; [1,3,5,6], target &#x3D; 2
-输出: 1</code></pre></div></figure>
-<p><strong>示例 3:</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: nums &#x3D; [1,3,5,6], target &#x3D; 7
-输出: 4</code></pre></div></figure>
-<p><strong>提示:</strong></p>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-linked-list/description/">234.
+回文链表 - 力扣（LeetCode）</a></p>
+<p>给你一个单链表的头节点 <code>head</code>
+，请你判断该链表是否为回文链表。如果是，返回 <code>true</code>
+；否则，返回 <code>false</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure>
+<img
+src="https://assets.leetcode.com/uploads/2021/03/03/pal1linked-list.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2,2,1]
+输出：true</code></pre></div></figure>
+<p><strong>示例 2：</strong></p>
+<figure>
+<img
+src="https://assets.leetcode.com/uploads/2021/03/03/pal2linked-list.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2]
+输出：false</code></pre></div></figure>
+<p><strong>提示：</strong></p>
 <ul>
-<li><code>1 &lt;= nums.length &lt;= 104</code></li>
-<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
-<li><code>nums</code> 为 <strong>无重复元素</strong> 的
-<strong>升序</strong> 排列数组</li>
-<li><code>-104 &lt;= target &lt;= 104</code></li>
+<li>链表中节点数目在范围<code>[1, 105]</code> 内</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
 </ul>
+<p><strong>进阶：</strong>你能否用 <code>O(n)</code> 时间复杂度和
+<code>O(1)</code> 空间复杂度解决此题？</p>
 <h2 id="题解">题解</h2>
-<h3 id="二分查找">二分查找</h3>
+<h3 id="自己解法">自己解法</h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int searchInsert(int[] nums, int target) &#123;
-        &#x2F;&#x2F; 二分查找 左右采用闭区间[left,right]
-        int left &#x3D; 0;
-        int right &#x3D; nums.length - 1;
-
-        &#x2F;&#x2F; 循环边界条件有等于号
-        while (left &lt;&#x3D; right) &#123;
-            int mid &#x3D; left + (right - left) &#x2F; 2; &#x2F;&#x2F; (left+right) &#x2F; 2 可能会整型溢出
-            if (target &gt; nums[mid]) &#123;
-                left &#x3D; mid + 1;                  &#x2F;&#x2F; 左边界更新为mid+1
-            &#125; else if (target &lt; nums[mid]) &#123;
-                right &#x3D; mid - 1;                 &#x2F;&#x2F; 右边界更新为mid-1
-            &#125; else &#123;
-                return mid;
-            &#125;
+    public boolean isPalindrome(ListNode head) &#123;
+        &#x2F;&#x2F; 头插法创造反转链表
+        ListNode reversedDummy &#x3D; new ListNode();
+        ListNode curr &#x3D; head;
+        while (curr !&#x3D; null) &#123;
+            ListNode newNode &#x3D; new ListNode(curr.val);
+            newNode.next &#x3D; reversedDummy.next;
+            reversedDummy.next &#x3D; newNode;
+            curr &#x3D; curr.next;
         &#125;
 
-        &#x2F;&#x2F; 二分查找返回left
-        return left;
+        &#x2F;&#x2F; 比较反转后的链表和原链表
+        ListNode reversedHead &#x3D; reversedDummy.next;
+        while (reversedHead !&#x3D; null) &#123;
+            if (reversedHead.val !&#x3D; head.val) &#123;
+                return false;
+            &#125;
+            reversedHead &#x3D; reversedHead.next;
+            head &#x3D; head.next;
+        &#125;
+        return true;
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>l</em><em>o</em><em>g</em><em>n</em>)</span>，其中
-<span class="math inline"><em>n</em></span>
-为数组的长度。二分查找所需的时间复杂度为 <span
-class="math inline"><em>O</em>(<em>l</em><em>o</em><em>g</em><em>n</em>)</span>。</p>
+class="math inline"><em>O</em>(<em>n</em>)</span>，遍历了两次链表，链表长度为<span
+class="math inline"><em>n</em></span>。</p>
 <p>空间复杂度：<span
-class="math inline"><em>O</em>(1)</span>。我们只需要常数空间存放若干变量。</p>
+class="math inline"><em>O</em>(<em>n</em>)</span>，构造的反转链表长度为<span
+class="math inline"><em>n</em></span>。</p>
+<h3
+id="官方解法转字符串判断回文字符串">官方解法（转字符串判断回文字符串）</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public boolean isPalindrome(ListNode head) &#123;
+        List&lt;Integer&gt; vals &#x3D; new ArrayList&lt;Integer&gt;();
+
+        &#x2F;&#x2F; 将链表的值复制到数组中
+        ListNode currentNode &#x3D; head;
+        while (currentNode !&#x3D; null) &#123;
+            vals.add(currentNode.val);
+            currentNode &#x3D; currentNode.next;
+        &#125;
+
+        &#x2F;&#x2F; 使用双指针判断是否回文
+        int front &#x3D; 0;
+        int back &#x3D; vals.size() - 1;
+        while (front &lt; back) &#123;
+            if (!vals.get(front).equals(vals.get(back))) &#123;
+                return false;
+            &#125;
+            front++;
+            back--;
+        &#125;
+        return true;
+    &#125;
+&#125;</code></pre></div></figure>
+<p>时间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
+class="math inline"><em>n</em></span> 指的是链表的元素个数。 第一步：
+遍历链表并将值复制到数组中，<span
+class="math inline"><em>O</em>(<em>n</em>)</span>。
+第二步：双指针判断是否为回文，执行了 <span
+class="math inline"><em>O</em>(<em>n</em>/2)</span> 次的判断，即 <span
+class="math inline"><em>O</em>(<em>n</em>)</span>。
+总的时间复杂度：<span
+class="math inline"><em>O</em>(2<em>n</em>) = <em>O</em>(<em>n</em>)</span>。
+空间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
+class="math inline"><em>n</em></span>
+指的是链表的元素个数，我们使用了一个数组列表存放链表的元素值</p>
+<h3 id="官方解法快慢指针">官方解法（快慢指针）</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public boolean isPalindrome(ListNode head) &#123;
+        if (head &#x3D;&#x3D; null) &#123;
+            return true;
+        &#125;
+
+        &#x2F;&#x2F; 找到前半部分链表的尾节点并反转后半部分链表
+        ListNode firstHalfEnd &#x3D; endOfFirstHalf(head);
+        ListNode secondHalfStart &#x3D; reverseList(firstHalfEnd.next);
+
+        &#x2F;&#x2F; 判断是否回文
+        ListNode p1 &#x3D; head;
+        ListNode p2 &#x3D; secondHalfStart;
+        boolean result &#x3D; true;
+
+        &#x2F;&#x2F; 后半链表更短，所以以p2为基准遍历
+        while (p2 !&#x3D; null) &#123;
+            if (p1.val !&#x3D; p2.val) return false;
+            p1 &#x3D; p1.next;
+            p2 &#x3D; p2.next;
+        &#125;
+        return true;
+    &#125;
+
+    &#x2F;&#x2F; 反转链表
+    private ListNode reverseList(ListNode head) &#123;
+        ListNode prev &#x3D; null;
+        ListNode curr &#x3D; head;
+        while (curr !&#x3D; null) &#123;
+            ListNode nextTemp &#x3D; curr.next;
+            curr.next &#x3D; prev;
+            prev &#x3D; curr;
+            curr &#x3D; nextTemp;
+        &#125;
+        return prev;
+    &#125;
+
+    &#x2F;&#x2F; 通过快慢指针找到前半段链表的尾部，节点为奇数时slow为中点，偶数时为前半的末尾
+    private ListNode endOfFirstHalf(ListNode head) &#123;
+        ListNode fast &#x3D; head;
+        ListNode slow &#x3D; head;
+        while (fast.next !&#x3D; null &amp;&amp; fast.next.next !&#x3D; null) &#123;
+            fast &#x3D; fast.next.next;
+            slow &#x3D; slow.next;
+        &#125;
+        return slow;
+    &#125;
+&#125;</code></pre></div></figure>
+<p>时间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，因为遍历了整个链表</p>
+<p>空间复杂度：<span
+class="math inline"><em>O</em>(1)</span>，只使用了常数个指针，没有额外结构</p>
 <h2 id="总结">总结</h2>
-<p>二分查找的难点在于边界条件的选取，这里我选择了最符合直觉的。左右采用闭区间<span
-class="math inline">[<em>l</em><em>e</em><em>f</em><em>t</em>, <em>r</em><em>i</em><em>g</em><em>h</em><em>t</em>]</span>，此时循环的边界条件一定要有等于号，直觉上可以理解为闭区间是可以<span
-class="math inline"><em>l</em><em>e</em><em>f</em><em>t</em> = <em>r</em><em>i</em><em>g</em><em>h</em><em>t</em></span>的。同时左右边界的更新也比较符合直觉，大于<span
-class="math inline"><em>m</em><em>i</em><em>d</em></span>则更新左边界为<span
-class="math inline"><em>m</em><em>i</em><em>d</em> + 1</span>，小于<span
-class="math inline"><em>m</em><em>i</em><em>d</em></span>则更新右边界为<span
-class="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最后的返回值是left不太符合直觉，直接记住就好，接下来放两个二分查找的模板参考：</p>
-<h3 id="闭区间">闭区间</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int searchInsert(int[] nums, int target) &#123;
-        int left &#x3D; 0, right &#x3D; nums.length - 1; &#x2F;&#x2F; 注意
-        
-        while(left &lt;&#x3D; right) &#123; &#x2F;&#x2F; 注意
-            int mid &#x3D; (left + right) &#x2F; 2; &#x2F;&#x2F; 注意        
-            if(nums[mid] &#x3D;&#x3D; target) &#123; &#x2F;&#x2F; 注意
-                &#x2F;&#x2F; 相关逻辑
-            &#125; else if(nums[mid] &lt; target) &#123;
-                left &#x3D; mid + 1; &#x2F;&#x2F; 注意
-            &#125; else &#123;
-                right &#x3D; mid - 1; &#x2F;&#x2F; 注意
-            &#125;
-        &#125;
-        &#x2F;&#x2F; 相关返回值
-        return left;
-    &#125;
-&#125;</code></pre></div></figure>
-<h3 id="开区间">开区间</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int searchInsert(int[] nums, int target) &#123;
-        int left &#x3D; 0, right &#x3D; nums.length; &#x2F;&#x2F; 注意
-        
-        while(left &lt; right) &#123; &#x2F;&#x2F; 注意
-            int mid &#x3D; (left + right) &#x2F; 2; &#x2F;&#x2F; 注意
-            if(nums[mid] &#x3D;&#x3D; target) &#123;
-                &#x2F;&#x2F; 相关逻辑
-            &#125; else if(nums[mid] &lt; target) &#123;
-                left &#x3D; mid + 1; &#x2F;&#x2F; 注意
-            &#125; else &#123;
-                right &#x3D; mid; &#x2F;&#x2F; 注意
-            &#125;
-        &#125;
-        &#x2F;&#x2F; 相关返回值
-        return left;
-    &#125;
-&#125;</code></pre></div></figure>
+<p>自己的方法就是先反转链表再比较，灵机一动想到头插法构造反转链表。</p>
+<p>官方解法一其实就是判断回文串，使用头尾双指针。</p>
+<p>解法二主要学到的是利用快慢指针找到链表的中点。</p>
 
                 
               </div>
@@ -502,7 +566,11 @@ class="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最�
       
         <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
       
-        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="print-no-link">#二分查找</a>
+        <a href="/tags/%E9%93%BE%E8%A1%A8/" class="print-no-link">#链表</a>
+      
+        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#双指针</a>
+      
+        <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" class="print-no-link">#快慢指针</a>
       
     </div>
   
@@ -514,8 +582,8 @@ class="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC035 - 搜索插入位置</div>
-      <div>http://tsukinai.github.io/2025/08/06/LC035/</div>
+      <div>LC234</div>
+      <div>http://tsukinai.github.io/2025/08/07/LC234/</div>
     </div>
     <div class="license-meta">
       
@@ -527,7 +595,7 @@ class="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月6日</div>
+          <div>2025年8月7日</div>
         </div>
       
       
@@ -559,9 +627,9 @@ class="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/06/LC206/" title="LC206 - 反转链表">
+                      <a href="/2025/08/07/LC125/" title="LC125 - 验证回文串">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC206 - 反转链表</span>
+                        <span class="hidden-mobile">LC125 - 验证回文串</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -569,8 +637,8 @@ class="math inline"><em>m</em><em>i</em><em>d</em> − 1</span>。但是最�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/06/LC002/" title="LC002 - 两数相加">
-                        <span class="hidden-mobile">LC002 - 两数相加</span>
+                      <a href="/2025/08/07/LC160/" title="LC160 - 相交链表">
+                        <span class="hidden-mobile">LC160 - 相交链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
