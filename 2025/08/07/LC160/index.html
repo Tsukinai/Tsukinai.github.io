@@ -16,23 +16,25 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题 给你一个链表的头节点 head ，判断链表中是否有环。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。 如果链表中存在环 ，则返回 true 。 否则，返回 false">
+    <meta name="description" content="原题 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。 图示两个链表在节点 c1 开始相交：  题目数据 保证 整个链式结构中不存在环。 注意，函数返回结果后，链表必须 保持其原始结构 。 自定义评测： 评测系统 的输入如下（你设计的程序 不适用 此输入）：  intersectV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC141 - 环形链表">
-<meta property="og:url" content="http://tsukinai.github.io/2025/08/07/LC141/index.html">
+<meta property="og:title" content="LC160 - 相交链表">
+<meta property="og:url" content="http://tsukinai.github.io/2025/08/07/LC160/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="原题 给你一个链表的头节点 head ，判断链表中是否有环。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。 如果链表中存在环 ，则返回 true 。 否则，返回 false">
+<meta property="og:description" content="原题 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。 图示两个链表在节点 c1 开始相交：  题目数据 保证 整个链式结构中不存在环。 注意，函数返回结果后，链表必须 保持其原始结构 。 自定义评测： 评测系统 的输入如下（你设计的程序 不适用 此输入）：  intersectV">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-07T06:40:19.000Z">
-<meta property="article:modified_time" content="2025-08-07T07:59:48.371Z">
+<meta property="article:published_time" content="2025-08-07T09:07:22.000Z">
+<meta property="article:modified_time" content="2025-08-07T09:34:11.328Z">
 <meta property="article:author" content="Tsukinai">
+<meta property="article:tag" content="哈希表">
 <meta property="article:tag" content="简单">
 <meta property="article:tag" content="链表">
+<meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LC141 - 环形链表 - Tsukinai</title>
+  <title>LC160 - 相交链表 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -277,7 +279,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC141 - 环形链表"></span>
+            <span id="subtitle" data-typed-text="LC160 - 相交链表"></span>
           
         </div>
 
@@ -288,7 +290,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-07 14:40" pubdate>
+        <time datetime="2025-08-07 17:07" pubdate>
           2025年8月7日 下午
         </time>
       </span>
@@ -300,7 +302,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          715 字
+          1.5k 字
         
       </span>
     
@@ -311,7 +313,7 @@
         
         
         
-          6 分钟
+          13 分钟
         
       </span>
     
@@ -356,111 +358,204 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LC141 - 环形链表</h1>
+            <h1 id="seo-header">LC160 - 相交链表</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="原题">原题</h2>
-<p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p>
-<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code>
-指针再次到达，则链表中存在环。
-为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code>
-来表示链表尾连接到链表中的位置（索引从 0
-开始）。<strong>注意：<code>pos</code> 不作为参数进行传递</strong>
-。仅仅是为了标识链表的实际情况。</p>
-<p><em>如果链表中存在环</em> ，则返回 <code>true</code> 。 否则，返回
-<code>false</code> 。</p>
+<p>给你两个单链表的头节点 <code>headA</code> 和 <code>headB</code>
+，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回
+<code>null</code> 。</p>
+<p>图示两个链表在节点 <code>c1</code> 开始相交<strong>：</strong></p>
+<p><a
+target="_blank" rel="noopener" href="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png"><img
+src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png" srcset="/img/loading.gif" lazyload
+alt="img" /></a></p>
+<p>题目数据 <strong>保证</strong> 整个链式结构中不存在环。</p>
+<p><strong>注意</strong>，函数返回结果后，链表必须
+<strong>保持其原始结构</strong> 。</p>
+<p><strong>自定义评测：</strong></p>
+<p><strong>评测系统</strong> 的输入如下（你设计的程序
+<strong>不适用</strong> 此输入）：</p>
+<ul>
+<li><code>intersectVal</code> -
+相交的起始节点的值。如果不存在相交节点，这一值为 <code>0</code></li>
+<li><code>listA</code> - 第一个链表</li>
+<li><code>listB</code> - 第二个链表</li>
+<li><code>skipA</code> - 在 <code>listA</code>
+中（从头节点开始）跳到交叉节点的节点数</li>
+<li><code>skipB</code> - 在 <code>listB</code>
+中（从头节点开始）跳到交叉节点的节点数</li>
+</ul>
+<p>评测系统将根据这些输入创建链式数据结构，并将两个头节点
+<code>headA</code> 和 <code>headB</code>
+传递给你的程序。如果程序能够正确返回相交节点，那么你的解决方案将被
+<strong>视作正确答案</strong> 。</p>
 <p><strong>示例 1：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1
-输出：true
-解释：链表中有一个环，其尾部连接到第二个节点。</code></pre></div></figure>
+<p><a
+target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_1.png"><img
+src="https://assets.leetcode.com/uploads/2021/03/05/160_example_1_1.png" srcset="/img/loading.gif" lazyload
+alt="img" /></a></p>
+<blockquote>
+<p>输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5],
+skipA = 2, skipB = 3 输出：Intersected at ‘8’ 解释：相交节点的值为 8
+（注意，如果两个链表相交则不能为 0）。 从各自的表头开始算起，链表 A 为
+[4,1,8,4,5]，链表 B 为 [5,6,1,8,4,5]。 在 A 中，相交节点前有 2
+个节点；在 B 中，相交节点前有 3 个节点。 — 请注意相交节点的值不为
+1，因为在链表 A 和链表 B 之中值为 1 的节点 (A 中第二个节点和 B
+中第三个节点)
+是不同的节点。换句话说，它们在内存中指向两个不同的位置，而链表 A 和链表
+B 中值为 8 的节点 (A 中第三个节点，B 中第四个节点)
+在内存中指向相同的位置。</p>
+</blockquote>
 <p><strong>示例 2：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2], pos &#x3D; 0
-输出：true
-解释：链表中有一个环，其尾部连接到第一个节点。</code></pre></div></figure>
+<p><a
+target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_2.png"><img
+src="https://assets.leetcode.com/uploads/2021/03/05/160_example_2.png" srcset="/img/loading.gif" lazyload
+alt="img" /></a></p>
+<blockquote>
+<p>输入：intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA =
+3, skipB = 1 输出：Intersected at ‘2’ 解释：相交节点的值为 2
+（注意，如果两个链表相交则不能为 0）。 从各自的表头开始算起，链表 A 为
+[1,9,1,2,4]，链表 B 为 [3,2,4]。 在 A 中，相交节点前有 3 个节点；在 B
+中，相交节点前有 1 个节点。</p>
+</blockquote>
 <p><strong>示例 3：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1], pos &#x3D; -1
-输出：false
-解释：链表中没有环。</code></pre></div></figure>
+<p><a
+target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_3.png"><img
+src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_3.png" srcset="/img/loading.gif" lazyload
+alt="img" /></a></p>
+<blockquote>
+<p>输入：intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3,
+skipB = 2 输出：No intersection 解释：从各自的表头开始算起，链表 A 为
+[2,6,4]，链表 B 为 [1,5]。 由于这两个链表不相交，所以 intersectVal
+必须为 0，而 skipA 和 skipB 可以是任意值。 这两个链表不相交，因此返回
+null 。</p>
+</blockquote>
 <p><strong>提示：</strong></p>
 <ul>
-<li>链表中节点的数目范围是 <code>[0, 104]</code></li>
-<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
-<li><code>pos</code> 为 <code>-1</code> 或者链表中的一个
-<strong>有效索引</strong> 。</li>
+<li><code>listA</code> 中节点数目为 <code>m</code></li>
+<li><code>listB</code> 中节点数目为 <code>n</code></li>
+<li><code>1 &lt;= m, n &lt;= 3 * 104</code></li>
+<li><code>1 &lt;= Node.val &lt;= 105</code></li>
+<li><code>0 &lt;= skipA &lt;= m</code></li>
+<li><code>0 &lt;= skipB &lt;= n</code></li>
+<li>如果 <code>listA</code> 和 <code>listB</code>
+没有交点，<code>intersectVal</code> 为 <code>0</code></li>
+<li>如果 <code>listA</code> 和 <code>listB</code>
+有交点，<code>intersectVal == listA[skipA] == listB[skipB]</code></li>
 </ul>
-<p><strong>进阶：</strong>你能用
-<code>O(1)</code>（即，常量）内存解决此问题吗？</p>
+<p><strong>进阶：</strong>你能否设计一个时间复杂度 <code>O(m + n)</code>
+、仅用 <code>O(1)</code> 内存的解决方案？</p>
 <h2 id="题解">题解</h2>
-<h3 id="floyd算法">Floyd算法</h3>
+<h3 id="自己解法哈希表">自己解法（哈希表）</h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
-    public boolean hasCycle(ListNode head) &#123;
-        if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) return false;
-        ListNode quick &#x3D; head.next;
-        ListNode slow &#x3D; head;
-        while (quick !&#x3D; slow) &#123;
-            &#x2F;&#x2F; 由于快指针肯定在慢指针前面，所以只用快指针作为条件
-            if (quick &#x3D;&#x3D; null || quick.next &#x3D;&#x3D; null) &#123;
-                return false;
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;
+        ListNode curA &#x3D; headA;
+        ListNode curB &#x3D; headB;
+        HashSet&lt;ListNode&gt; seen &#x3D; new HashSet&lt;ListNode&gt;();
+        
+        &#x2F;&#x2F; 遍历A和B的所有节点
+        while (headA !&#x3D; null || headB !&#x3D; null) &#123;
+            
+            &#x2F;&#x2F; 若headA为空则说明遍历完成，不进入代码块
+            if (headA !&#x3D; null) &#123;
+                &#x2F;&#x2F; headA不为空，将headA节点添加到哈希表中
+                &#x2F;&#x2F; 如果添加失败说明重复了，返回headA
+                if (!seen.add(headA)) &#123;
+                    return headA;
+                &#125;
+                &#x2F;&#x2F; 指针后移
+                headA &#x3D; headA.next;
             &#125;
-            quick &#x3D; quick.next.next;
-            slow &#x3D; slow.next;
+            
+            &#x2F;&#x2F;headB同理
+            if (headB !&#x3D; null) &#123;
+                if (!seen.add(headB)) &#123;
+                    return headB;
+                &#125;
+                headB &#x3D; headB.next;
+            &#125;
         &#125;
-        return true;
+        return null;
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span> 是链表中的节点数。</p>
-<p>当链表中不存在环时，快指针将先于慢指针到达链表尾部，链表中每个节点至多被访问两次。</p>
-<p>当链表中存在环时，每一轮移动后，快慢指针的距离将减小一。而初始距离为环的长度，因此至多移动
-<span class="math inline"><em>n</em></span> 轮。</p>
-<p>空间复杂度：<span
-class="math inline"><em>O</em>(1)</span>。我们只使用了两个指针的额外空间。</p>
-<h3 id="哈希表">哈希表</h3>
+class="math inline"><em>O</em>(<em>m</em> + <em>n</em>)</span>，<span
+class="math inline"><em>m</em></span>和<span
+class="math inline"><em>n</em></span>分别是链表长度。</p>
+<p>空间复杂度： <span
+class="math inline"><em>O</em>(<em>m</em> + <em>n</em>)</span>，在最坏情况下，如果两个链表没有交点，那么会将所有$
+m + n $个节点都存进 <code>HashSet</code>。</p>
+<h3 id="官方解法哈希表">官方解法（哈希表）</h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
-    public boolean hasCycle(ListNode head) &#123;
-        Set&lt;ListNode&gt; seen &#x3D; new HashSet&lt;ListNode&gt;();
-        while (head !&#x3D; null) &#123;
-            &#x2F;&#x2F; 如果重复则有环
-            if (!seen.add(head)) &#123;
-                return true;
-            &#125;
-            head &#x3D; head.next;
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;
+        Set&lt;ListNode&gt; visited &#x3D; new HashSet&lt;ListNode&gt;();
+        ListNode temp &#x3D; headA;
+        while (temp !&#x3D; null) &#123;
+            visited.add(temp);
+            temp &#x3D; temp.next;
         &#125;
-        return false;
+        temp &#x3D; headB;
+        while (temp !&#x3D; null) &#123;
+            if (visited.contains(temp)) &#123;
+                return temp;
+            &#125;
+            temp &#x3D; temp.next;
+        &#125;
+        return null;
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-是链表中的节点数。最坏情况下我们需要遍历每个节点一次。</p>
+class="math inline"><em>O</em>(<em>m</em> + <em>n</em>)</span>，其中
+<span class="math inline"><em>m</em></span> 和 <span
+class="math inline"><em>n</em></span> 是分别是链表 headA 和 headB
+的长度。需要遍历两个链表各一次。</p>
 <p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-是链表中的节点数。主要为哈希表的开销，最坏情况下我们需要将每个节点插入到哈希表中一次。</p>
+class="math inline"><em>O</em>(<em>m</em>)</span>，其中 <span
+class="math inline"><em>m</em></span> 是链表 headA
+的长度。需要使用哈希集合存储链表 headA 中的全部节点。</p>
+<h3 id="官方解法双指针">官方解法（双指针）</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;
+        if (headA &#x3D;&#x3D; null || headB &#x3D;&#x3D; null) &#123;
+            return null;
+        &#125;
+        ListNode pA &#x3D; headA, pB &#x3D; headB;
+        while (pA !&#x3D; pB) &#123;
+            pA &#x3D; pA &#x3D;&#x3D; null ? headB : pA.next;
+            pB &#x3D; pB &#x3D;&#x3D; null ? headA : pB.next;
+        &#125;
+        return pA;
+    &#125;
+&#125;</code></pre></div></figure>
+<p>时间复杂度：<span
+class="math inline"><em>O</em>(<em>m</em> + <em>n</em>)</span>，其中
+<span class="math inline"><em>m</em></span> 和 <span
+class="math inline"><em>n</em></span> 是分别是链表 headA 和 headB
+的长度。两个指针同时遍历两个链表，每个指针遍历两个链表各一次。</p>
+<p>空间复杂度：<span class="math inline"><em>O</em>(1)</span>。</p>
 <h2 id="总结">总结</h2>
-<p>判断链表是否有环最经典的就是Floyd算法，利用快慢指针，如果有环那么快指针会追上慢指针，否则快指针会第一个指向null。</p>
-<p>哈希表的方法也很好理解，不断添加节点到哈希表中，如果添加失败说明有重复的，有环。</p>
+<p>自己当时的想法是想到了两数相加那一题，一口气遍历完两个链表，答案是正确的，但是空间复杂度偏高，把两个链表都存储了。</p>
+<p>官方的哈希表解法中只存储了一个链表，另一个链表只用contains判断，时间复杂度相同，但是空间复杂度只有一个链表的长度。</p>
+<p>官方的双指针解法需要细细品味：</p>
+<p>假设A不重合长度为<span
+class="math inline"><em>m</em></span>，B不重合长度为<span
+class="math inline"><em>n</em></span>，AB重合长度为<span
+class="math inline"><em>k</em></span>。若A长度比B小，那么<code>pA</code>先走完<span
+class="math inline"><em>m</em> + <em>k</em></span>，也就是A的总长度，此时<code>pB</code>也走了相同步数。</p>
+<p>A走到null时转到B的开头，当走到交点时，<code>pA</code>一共走了<span
+class="math inline"><em>m</em> + <em>k</em> + <em>n</em></span>,此时<code>pB</code>也走了这么多步，二者此时相遇。</p>
+<p><strong>为什么这样一定能相遇？</strong></p>
+<p>因为：</p>
+<ul>
+<li><code>pA</code> 实际上走了：A 全长 + B 非重合部分 = <span
+class="math inline"><em>m</em> + <em>k</em> + <em>n</em></span></li>
+<li><code>pB</code> 实际上走了：B 全长 + A 非重合部分 = <span
+class="math inline"><em>m</em> + <em>k</em> + <em>n</em></span></li>
+</ul>
+<p>当两个指针互换链表后，相当于<strong>补足了长度差</strong>，让两个指针在相交处对齐。</p>
 
                 
               </div>
@@ -501,9 +596,13 @@ class="math inline"><em>n</em></span>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="print-no-link">#哈希表</a>
+      
         <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
       
         <a href="/tags/%E9%93%BE%E8%A1%A8/" class="print-no-link">#链表</a>
+      
+        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#双指针</a>
       
     </div>
   
@@ -515,8 +614,8 @@ class="math inline"><em>n</em></span>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC141 - 环形链表</div>
-      <div>http://tsukinai.github.io/2025/08/07/LC141/</div>
+      <div>LC160 - 相交链表</div>
+      <div>http://tsukinai.github.io/2025/08/07/LC160/</div>
     </div>
     <div class="license-meta">
       
@@ -560,18 +659,12 @@ class="math inline"><em>n</em></span>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/07/LC160/" title="LC160 - 相交链表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC160 - 相交链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/06/LC206/" title="LC206 - 反转链表">
-                        <span class="hidden-mobile">LC206 - 反转链表</span>
+                      <a href="/2025/08/07/LC141/" title="LC141 - 环形链表">
+                        <span class="hidden-mobile">LC141 - 环形链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
