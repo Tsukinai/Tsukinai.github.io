@@ -16,25 +16,24 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题 142. 环形链表 II - 力扣（LeetCode） 给定一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是 -1，则在">
+    <meta name="description" content="原题 20. 有效的括号 - 力扣（LeetCode） 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;&#123;&#39;，&#39;&#125;&#39;，&#39;[&#39;，&#39;]&#39; 的字符串 s ，判断字符串是否有效。 有效字符串需满足：  左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 每个右括号都有一个对应的相同类型的左括号。  示例 1： 输入：s &#x3D; &quot;()&quot; 输出：true 示例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC142 - 环形链表 II">
-<meta property="og:url" content="http://tsukinai.github.io/2025/08/08/LC142/index.html">
+<meta property="og:title" content="LC020 - 有效的括号">
+<meta property="og:url" content="http://tsukinai.github.io/2025/08/09/LC020/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="原题 142. 环形链表 II - 力扣（LeetCode） 给定一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是 -1，则在">
+<meta property="og:description" content="原题 20. 有效的括号 - 力扣（LeetCode） 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;&#123;&#39;，&#39;&#125;&#39;，&#39;[&#39;，&#39;]&#39; 的字符串 s ，判断字符串是否有效。 有效字符串需满足：  左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 每个右括号都有一个对应的相同类型的左括号。  示例 1： 输入：s &#x3D; &quot;()&quot; 输出：true 示例">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-08T08:10:41.000Z">
-<meta property="article:modified_time" content="2025-08-08T11:45:40.424Z">
+<meta property="article:published_time" content="2025-08-09T09:53:20.000Z">
+<meta property="article:modified_time" content="2025-08-09T10:14:01.519Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="哈希表">
-<meta property="article:tag" content="链表">
-<meta property="article:tag" content="中等">
-<meta property="article:tag" content="快慢指针">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="栈">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LC142 - 环形链表 II - Tsukinai</title>
+  <title>LC020 - 有效的括号 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -279,7 +278,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC142 - 环形链表 II"></span>
+            <span id="subtitle" data-typed-text="LC020 - 有效的括号"></span>
           
         </div>
 
@@ -290,8 +289,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-08 16:10" pubdate>
-          2025年8月8日 下午
+        <time datetime="2025-08-09 17:53" pubdate>
+          2025年8月9日 下午
         </time>
       </span>
     
@@ -302,7 +301,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          839 字
         
       </span>
     
@@ -313,7 +312,7 @@
         
         
         
-          9 分钟
+          7 分钟
         
       </span>
     
@@ -358,158 +357,157 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LC142 - 环形链表 II</h1>
+            <h1 id="seo-header">LC020 - 有效的括号</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="原题">原题</h2>
 <p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/description/">142.
-环形链表 II - 力扣（LeetCode）</a></p>
-<p>给定一个链表的头节点 <code>head</code>
-，返回链表开始入环的第一个节点。 <em>如果链表无环，则返回
-<code>null</code>。</em></p>
-<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code>
-指针再次到达，则链表中存在环。
-为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code>
-来表示链表尾连接到链表中的位置（<strong>索引从 0 开始</strong>）。如果
-<code>pos</code> 是
-<code>-1</code>，则在该链表中没有环。<strong>注意：<code>pos</code>
-不作为参数进行传递</strong>，仅仅是为了标识链表的实际情况。</p>
-<p><strong>不允许修改</strong> 链表。</p>
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/description/">20.
+有效的括号 - 力扣（LeetCode）</a></p>
+<p>给定一个只包括
+<code>'('</code>，<code>')'</code>，<code>'&#123;'</code>，<code>'&#125;'</code>，<code>'['</code>，<code>']'</code>
+的字符串 <code>s</code> ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ol type="1">
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+<li>每个右括号都有一个对应的相同类型的左括号。</li>
+</ol>
 <p><strong>示例 1：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1
-输出：返回索引为 1 的链表节点
-解释：链表中有一个环，其尾部连接到第二个节点。</code></pre></div></figure>
+<p><strong>输入：</strong><code>s = "()"</code></p>
+<p><strong>输出：</strong>true</p>
 <p><strong>示例 2：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2], pos &#x3D; 0
-输出：返回索引为 0 的链表节点
-解释：链表中有一个环，其尾部连接到第一个节点。</code></pre></div></figure>
+<p><strong>输入：</strong><code>s = "()[]&#123;&#125;"</code></p>
+<p><strong>输出：</strong>true</p>
 <p><strong>示例 3：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1], pos &#x3D; -1
-输出：返回 null
-解释：链表中没有环。</code></pre></div></figure>
+<p><strong>输入：</strong><code>s = "(]"</code></p>
+<p><strong>输出：</strong>false</p>
+<p><strong>示例 4：</strong></p>
+<p><strong>输入：</strong><code>s = "([])"</code></p>
+<p><strong>输出：</strong>true</p>
+<p><strong>示例 5：</strong></p>
+<p><strong>输入：</strong><code>s = "([)]"</code></p>
+<p><strong>输出：</strong>false</p>
 <p><strong>提示：</strong></p>
 <ul>
-<li>链表中节点的数目范围在范围 <code>[0, 104]</code> 内</li>
-<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
-<li><code>pos</code> 的值为 <code>-1</code>
-或者链表中的一个有效索引</li>
+<li><code>1 &lt;= s.length &lt;= 104</code></li>
+<li><code>s</code> 仅由括号 <code>'()[]&#123;&#125;'</code> 组成</li>
 </ul>
-<p><strong>进阶：</strong>你是否可以使用 <code>O(1)</code>
-空间解决此题？</p>
 <h2 id="题解">题解</h2>
-<h3 id="哈希表">哈希表</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
-    public ListNode detectCycle(ListNode head) &#123;
-        HashSet&lt;ListNode&gt; set &#x3D; new HashSet&lt;ListNode&gt;();
-        ListNode temp &#x3D; head;
-        
-        &#x2F;&#x2F; 将链表的节点依次加入哈希表中，如果有重复的，那么就返回这个节点
-        while (temp !&#x3D; null) &#123;
-            if (!set.add(temp)) &#123;
-                return temp;
+<h3 id="自己的解法">自己的解法</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public boolean isValid(String s) &#123;
+        &#x2F;&#x2F; 使用栈存储未匹配的左括号
+        Deque&lt;Character&gt; stack &#x3D; new LinkedList&lt;&gt;();
+
+        &#x2F;&#x2F; 遍历字符串的每一个字符
+        for (Character c : s.toCharArray()) &#123;
+
+            &#x2F;&#x2F; 如果是左括号，入栈
+            if (c &#x3D;&#x3D; &#39;(&#39; || c &#x3D;&#x3D; &#39;[&#39; || c &#x3D;&#x3D; &#39;&#123;&#39;) &#123;
+                stack.push(c);
             &#125;
-            temp &#x3D; temp.next;
-        &#125;
-        return null;
-    &#125;
-&#125;</code></pre></div></figure>
-<p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-为链表中节点的数目。我们恰好需要访问链表中的每一个节点。</p>
-<p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-为链表中节点的数目。我们需要将链表中的每个节点都保存在哈希表当中</p>
-<h3 id="快慢指针">快慢指针</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
-    public ListNode detectCycle(ListNode head) &#123;
-        if (head &#x3D;&#x3D; null) return null;
-        ListNode quick &#x3D; head;
-        ListNode slow &#x3D; head;
-        
-        &#x2F;&#x2F; Floyd判圈算法找快慢指针交点
-        while (quick !&#x3D; null &amp;&amp; quick.next !&#x3D; null) &#123;
-            quick &#x3D; quick.next.next;
-            slow &#x3D; slow.next;
-            
-            &#x2F;&#x2F; 快指针追上慢指针
-            if (quick &#x3D;&#x3D; slow) &#123;
-                &#x2F;&#x2F; 慢指针在二者相遇位置
-                &#x2F;&#x2F; 快指针重置到链表头
-                quick &#x3D; head;
-                
-                &#x2F;&#x2F; 当快慢指针相遇时就是入环的第一个节点
-                while (quick !&#x3D; slow) &#123;
-                    quick &#x3D; quick.next;
-                    slow &#x3D; slow.next;
+            &#x2F;&#x2F; 如果是右括号并且栈不为空
+            else if (!stack.isEmpty()) &#123;
+
+                &#x2F;&#x2F; 处理右括号 &#39;)&#39;
+                if (c &#x3D;&#x3D; &#39;)&#39;) &#123;
+                    if (stack.peek() &#x3D;&#x3D; &#39;(&#39;) &#123; &#x2F;&#x2F; 匹配 &#39;(&#39;
+                        stack.pop();           &#x2F;&#x2F; 弹出匹配的左括号
+                    &#125; else &#123;
+                        return false;          &#x2F;&#x2F; 不匹配
+                    &#125;
                 &#125;
-                return quick;
+
+                &#x2F;&#x2F; 处理右括号 &#39;]&#39;
+                if (c &#x3D;&#x3D; &#39;]&#39;) &#123;
+                    if (stack.peek() &#x3D;&#x3D; &#39;[&#39;) &#123; &#x2F;&#x2F; 匹配 &#39;[&#39;
+                        stack.pop();
+                    &#125; else &#123;
+                        return false;
+                    &#125;
+                &#125;
+
+                &#x2F;&#x2F; 处理右括号 &#39;&#125;&#39;
+                if (c &#x3D;&#x3D; &#39;&#125;&#39;) &#123;
+                    if (stack.peek() &#x3D;&#x3D; &#39;&#123;&#39;) &#123; &#x2F;&#x2F; 匹配 &#39;&#123;&#39;
+                        stack.pop();
+                    &#125; else &#123;
+                        return false;
+                    &#125;
+                &#125;
+            &#125;
+            &#x2F;&#x2F; 如果是右括号但栈为空 → 不合法
+            else &#123;
+                return false;
             &#125;
         &#125;
-        &#x2F;&#x2F; 无环
-        return null;
+
+        &#x2F;&#x2F; 栈为空表示所有括号已成功匹配
+        if (!stack.isEmpty()) return false;
+        return true;
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-为链表中节点的数目。在最初判断快慢指针是否相遇时，slow
-指针走过的距离不会超过链表的总长度；随后寻找入环点时，走过的距离也不会超过链表的总长度。因此，总的执行时间为
-<span
-class="math inline"><em>O</em>(<em>n</em>) + <em>O</em>(<em>n</em>) = <em>O</em>(<em>n</em>)</span>。</p>
-<p>空间复杂度：O(1)。我们只使用了 slow,quick 两个指针。</p>
+class="math inline"><em>O</em>(<em>n</em>)</span>，遍历一次字符串长度为<span
+class="math inline"><em>n</em></span>，且栈的操作（push、pop、peek、isEmpty）都是
+O(1)，总时间与字符串长度成正比。</p>
+<p>空间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，最坏情况下（例如
+“<code>(((([[[&#123;&#123;&#123;</code>”），所有字符都是左括号并入栈，栈最多存 <span
+class="math inline"><em>n</em></span> 个字符，所以需要 O(n)
+额外空间。</p>
+<h3 id="gpt优化版">GPT优化版</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public boolean isValid(String s) &#123;
+        &#x2F;&#x2F; 使用栈保存左括号
+        Deque&lt;Character&gt; stack &#x3D; new LinkedList&lt;&gt;();
+
+        &#x2F;&#x2F; 遍历字符串中每个字符
+        for (char c : s.toCharArray()) &#123;
+            switch (c) &#123;
+                &#x2F;&#x2F; 遇到左括号，入栈
+                case &#39;(&#39;:
+                case &#39;[&#39;:
+                case &#39;&#123;&#39;:
+                    stack.push(c);
+                    break;
+                &#x2F;&#x2F; 遇到右括号，检查栈顶是否匹配
+                case &#39;)&#39;:
+                    if (stack.isEmpty() || stack.peek() !&#x3D; &#39;(&#39;) return false;
+                    stack.pop();
+                    break;
+                case &#39;]&#39;:
+                    if (stack.isEmpty() || stack.peek() !&#x3D; &#39;[&#39;) return false;
+                    stack.pop();
+                    break;
+                case &#39;&#125;&#39;:
+                    if (stack.isEmpty() || stack.peek() !&#x3D; &#39;&#123;&#39;) return false;
+                    stack.pop();
+                    break;
+                &#x2F;&#x2F; 非法字符直接返回 false
+                default:
+                    return false;
+            &#125;
+        &#125;
+
+        &#x2F;&#x2F; 栈空表示所有括号匹配成功
+        return stack.isEmpty();
+    &#125;
+&#125;</code></pre></div></figure>
+<p>时间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，遍历一次字符串长度为<span
+class="math inline"><em>n</em></span>，且栈的操作（push、pop、peek、isEmpty）都是
+O(1)，总时间与字符串长度成正比。</p>
+<p>空间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，最坏情况下（例如
+“<code>(((([[[&#123;&#123;&#123;</code>”），所有字符都是左括号并入栈，栈最多存 <span
+class="math inline"><em>n</em></span> 个字符，所以需要 O(n)
+额外空间。</p>
 <h2 id="总结">总结</h2>
-<p>分析一下这个快慢指针的方法，先看一张图：</p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/solution-static/142/142_fig1.png" srcset="/img/loading.gif" lazyload
-alt="fig1" />
-<figcaption aria-hidden="true">fig1</figcaption>
-</figure>
-<p><span class="math inline"><em>a</em></span>为环前的节点数量，<span
-class="math inline"><em>b</em></span>为入环的第一个节点到相遇点的节点数量，<span
-class="math inline"><em>c</em></span>为相遇点到入环第一个节点的节点数量。</p>
-<p>先看第一个过程，快指针追上慢指针：</p>
-<p><span
-class="math inline"><em>s</em><em>l</em><em>o</em><em>w</em> = <em>a</em> + <em>b</em></span>（快指针一定在慢指针走完一圈前追上，快指针比慢指针速度快1，而他们之间的距离最长为<span
-class="math inline"><em>b</em> + <em>c</em> − 1</span>，也就是环长-1。）</p>
-<p><span
-class="math inline"><em>q</em><em>u</em><em>i</em><em>c</em><em>k</em> = <em>a</em> + <em>b</em> + <em>n</em>(<em>b</em> + <em>c</em>)</span>（快指针在追上慢指针时，比其多走几个圈长）</p>
-<p><span
-class="math inline"><em>q</em><em>u</em><em>i</em><em>c</em><em>k</em> = 2 * <em>s</em><em>l</em><em>o</em><em>w</em></span>（快指针速度是慢指针的两倍，所以走的距离也是慢指针的两倍）</p>
-<p>带入<span
-class="math inline"><em>q</em><em>u</em><em>i</em><em>c</em><em>k</em></span>和<span
-class="math inline"><em>s</em><em>l</em><em>o</em><em>w</em></span>，<span
-class="math inline">2 * (<em>a</em> + <em>b</em>) = <em>a</em> + <em>b</em> + <em>n</em>(<em>b</em> + <em>c</em>)</span>，而题目要求的相当于就是<span
-class="math inline"><em>a</em></span>，移项得到<span
-class="math inline"><em>a</em> = <em>n</em> * (<em>b</em> + <em>c</em>) − <em>b</em></span>
-等价于 <span
-class="math inline"><em>a</em> = <em>n</em> * (<em>b</em> + <em>c</em>) + <em>c</em></span>。</p>
-<p>得到的式子代表<span
-class="math inline"><em>a</em></span>的长度相当于<span
-class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个指针从head出发，一个指针从相遇点出发，两个指针速度相同，那么二者一定会在入环处碰头，最后两个指针相遇时，相遇点指向的就是入环处。</p>
+<p>自己的解法对于不同情况但是基本相同的操作可以利用switch简化代码，提高可读性，避免大量if-else。同时stack.isEmpty()本身返回值就是Boolean类型，可以直接作为返回值。</p>
 
                 
               </div>
@@ -550,13 +548,11 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="print-no-link">#哈希表</a>
+        <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
       
-        <a href="/tags/%E9%93%BE%E8%A1%A8/" class="print-no-link">#链表</a>
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="print-no-link">#字符串</a>
       
-        <a href="/tags/%E4%B8%AD%E7%AD%89/" class="print-no-link">#中等</a>
-      
-        <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" class="print-no-link">#快慢指针</a>
+        <a href="/tags/%E6%A0%88/" class="print-no-link">#栈</a>
       
     </div>
   
@@ -568,8 +564,8 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC142 - 环形链表 II</div>
-      <div>http://tsukinai.github.io/2025/08/08/LC142/</div>
+      <div>LC020 - 有效的括号</div>
+      <div>http://tsukinai.github.io/2025/08/09/LC020/</div>
     </div>
     <div class="license-meta">
       
@@ -581,7 +577,7 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月8日</div>
+          <div>2025年8月9日</div>
         </div>
       
       
@@ -613,9 +609,9 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/08/LC019/" title="LC019 - 删除链表的倒数第N个节点">
+                      <a href="/2025/08/09/LC070/" title="LC070 - 爬楼梯">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC019 - 删除链表的倒数第N个节点</span>
+                        <span class="hidden-mobile">LC070 - 爬楼梯</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -623,8 +619,8 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/07/LC125/" title="LC125 - 验证回文串">
-                        <span class="hidden-mobile">LC125 - 验证回文串</span>
+                      <a href="/2025/08/08/LC019/" title="LC019 - 删除链表的倒数第N个节点">
+                        <span class="hidden-mobile">LC019 - 删除链表的倒数第N个节点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

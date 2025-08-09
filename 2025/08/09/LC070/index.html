@@ -16,25 +16,24 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题 142. 环形链表 II - 力扣（LeetCode） 给定一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是 -1，则在">
+    <meta name="description" content="原题 70. 爬楼梯 - 力扣（LeetCode） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入：n &#x3D; 2 输出：2 解释：有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶 示例 2： 输入：n &#x3D; 3 输出：3 解释：有三种方法可以爬到楼顶。 1.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC142 - 环形链表 II">
-<meta property="og:url" content="http://tsukinai.github.io/2025/08/08/LC142/index.html">
+<meta property="og:title" content="LC070 - 爬楼梯">
+<meta property="og:url" content="http://tsukinai.github.io/2025/08/09/LC070/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="原题 142. 环形链表 II - 力扣（LeetCode） 给定一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是 -1，则在">
+<meta property="og:description" content="原题 70. 爬楼梯 - 力扣（LeetCode） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入：n &#x3D; 2 输出：2 解释：有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶 示例 2： 输入：n &#x3D; 3 输出：3 解释：有三种方法可以爬到楼顶。 1.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-08T08:10:41.000Z">
-<meta property="article:modified_time" content="2025-08-08T11:45:40.424Z">
+<meta property="article:published_time" content="2025-08-09T10:09:10.000Z">
+<meta property="article:modified_time" content="2025-08-09T12:03:51.930Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="哈希表">
-<meta property="article:tag" content="链表">
-<meta property="article:tag" content="中等">
-<meta property="article:tag" content="快慢指针">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="记忆化搜索">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LC142 - 环形链表 II - Tsukinai</title>
+  <title>LC070 - 爬楼梯 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -279,7 +278,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC142 - 环形链表 II"></span>
+            <span id="subtitle" data-typed-text="LC070 - 爬楼梯"></span>
           
         </div>
 
@@ -290,8 +289,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-08 16:10" pubdate>
-          2025年8月8日 下午
+        <time datetime="2025-08-09 18:09" pubdate>
+          2025年8月9日 晚上
         </time>
       </span>
     
@@ -302,7 +301,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          669 字
         
       </span>
     
@@ -313,7 +312,7 @@
         
         
         
-          9 分钟
+          6 分钟
         
       </span>
     
@@ -358,158 +357,109 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LC142 - 环形链表 II</h1>
+            <h1 id="seo-header">LC070 - 爬楼梯</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="原题">原题</h2>
 <p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/description/">142.
-环形链表 II - 力扣（LeetCode）</a></p>
-<p>给定一个链表的头节点 <code>head</code>
-，返回链表开始入环的第一个节点。 <em>如果链表无环，则返回
-<code>null</code>。</em></p>
-<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code>
-指针再次到达，则链表中存在环。
-为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code>
-来表示链表尾连接到链表中的位置（<strong>索引从 0 开始</strong>）。如果
-<code>pos</code> 是
-<code>-1</code>，则在该链表中没有环。<strong>注意：<code>pos</code>
-不作为参数进行传递</strong>，仅仅是为了标识链表的实际情况。</p>
-<p><strong>不允许修改</strong> 链表。</p>
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/description/">70.
+爬楼梯 - 力扣（LeetCode）</a></p>
+<p>假设你正在爬楼梯。需要 <code>n</code> 阶你才能到达楼顶。</p>
+<p>每次你可以爬 <code>1</code> 或 <code>2</code>
+个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
 <p><strong>示例 1：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1
-输出：返回索引为 1 的链表节点
-解释：链表中有一个环，其尾部连接到第二个节点。</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：n &#x3D; 2
+输出：2
+解释：有两种方法可以爬到楼顶。
+1. 1 阶 + 1 阶
+2. 2 阶</code></pre></div></figure>
 <p><strong>示例 2：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1,2], pos &#x3D; 0
-输出：返回索引为 0 的链表节点
-解释：链表中有一个环，其尾部连接到第一个节点。</code></pre></div></figure>
-<p><strong>示例 3：</strong></p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：head &#x3D; [1], pos &#x3D; -1
-输出：返回 null
-解释：链表中没有环。</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：n &#x3D; 3
+输出：3
+解释：有三种方法可以爬到楼顶。
+1. 1 阶 + 1 阶 + 1 阶
+2. 1 阶 + 2 阶
+3. 2 阶 + 1 阶</code></pre></div></figure>
 <p><strong>提示：</strong></p>
 <ul>
-<li>链表中节点的数目范围在范围 <code>[0, 104]</code> 内</li>
-<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
-<li><code>pos</code> 的值为 <code>-1</code>
-或者链表中的一个有效索引</li>
+<li><code>1 &lt;= n &lt;= 45</code></li>
 </ul>
-<p><strong>进阶：</strong>你是否可以使用 <code>O(1)</code>
-空间解决此题？</p>
 <h2 id="题解">题解</h2>
-<h3 id="哈希表">哈希表</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
-    public ListNode detectCycle(ListNode head) &#123;
-        HashSet&lt;ListNode&gt; set &#x3D; new HashSet&lt;ListNode&gt;();
-        ListNode temp &#x3D; head;
-        
-        &#x2F;&#x2F; 将链表的节点依次加入哈希表中，如果有重复的，那么就返回这个节点
-        while (temp !&#x3D; null) &#123;
-            if (!set.add(temp)) &#123;
-                return temp;
-            &#125;
-            temp &#x3D; temp.next;
+<h3 id="自己的解法超时">自己的解法（超时）</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public int climbStairs(int n) &#123;
+        &#x2F;&#x2F; 一层楼梯的时候有1种走法
+        if (n &#x3D;&#x3D; 1) &#123;
+            return 1;
         &#125;
-        return null;
+        &#x2F;&#x2F; 两层楼梯的时候有2种走法
+        if (n &#x3D;&#x3D; 2) &#123;
+            return 2;
+        &#125;
+        &#x2F;&#x2F; 在n楼时，要么从n-1楼走一步上来，要么从n-2楼走两步上来
+        return climbStairs(n - 1) + climbStairs(n - 2);
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-为链表中节点的数目。我们恰好需要访问链表中的每一个节点。</p>
+class="math inline"><em>O</em>(2<sup><em>n</em></sup>)</span>，原因是每次调用
+<code>climbStairs(n)</code> 会递归调用 <code>climbStairs(n-1)</code> 和
+<code>climbStairs(n-2)</code>，形成一棵高度为 n
+的二叉递归树，节点数大致是指数增长。</p>
 <p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-为链表中节点的数目。我们需要将链表中的每个节点都保存在哈希表当中</p>
-<h3 id="快慢指针">快慢指针</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Solution &#123;
-    public ListNode detectCycle(ListNode head) &#123;
-        if (head &#x3D;&#x3D; null) return null;
-        ListNode quick &#x3D; head;
-        ListNode slow &#x3D; head;
-        
-        &#x2F;&#x2F; Floyd判圈算法找快慢指针交点
-        while (quick !&#x3D; null &amp;&amp; quick.next !&#x3D; null) &#123;
-            quick &#x3D; quick.next.next;
-            slow &#x3D; slow.next;
-            
-            &#x2F;&#x2F; 快指针追上慢指针
-            if (quick &#x3D;&#x3D; slow) &#123;
-                &#x2F;&#x2F; 慢指针在二者相遇位置
-                &#x2F;&#x2F; 快指针重置到链表头
-                quick &#x3D; head;
-                
-                &#x2F;&#x2F; 当快慢指针相遇时就是入环的第一个节点
-                while (quick !&#x3D; slow) &#123;
-                    quick &#x3D; quick.next;
-                    slow &#x3D; slow.next;
-                &#125;
-                return quick;
-            &#125;
+class="math inline"><em>O</em>(<em>n</em>)</span>，递归栈的最大深度。</p>
+<h3 id="动态规划">动态规划</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public int climbStairs(int n) &#123;
+        if (n &#x3D;&#x3D; 1) return 1;
+        if (n &#x3D;&#x3D; 2) return 2;
+
+        int[] dp &#x3D; new int[n + 1];
+        dp[1] &#x3D; 1;  &#x2F;&#x2F; 只有1阶，走法只有1种
+        dp[2] &#x3D; 2;  &#x2F;&#x2F; 2阶，走法有2种
+
+        for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;
+            dp[i] &#x3D; dp[i - 1] + dp[i - 2];  &#x2F;&#x2F; 状态转移方程
         &#125;
-        &#x2F;&#x2F; 无环
-        return null;
+
+        return dp[n];
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
-class="math inline"><em>n</em></span>
-为链表中节点的数目。在最初判断快慢指针是否相遇时，slow
-指针走过的距离不会超过链表的总长度；随后寻找入环点时，走过的距离也不会超过链表的总长度。因此，总的执行时间为
-<span
-class="math inline"><em>O</em>(<em>n</em>) + <em>O</em>(<em>n</em>) = <em>O</em>(<em>n</em>)</span>。</p>
-<p>空间复杂度：O(1)。我们只使用了 slow,quick 两个指针。</p>
+class="math inline"><em>O</em>(<em>n</em>)</span>，只遍历一次</p>
+<p>空间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，存储了dp数组</p>
+<h3 id="空间优化版">空间优化版</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
+    public int climbStairs(int n) &#123;
+        &#x2F;&#x2F; 如果只有1阶，只有一种走法
+        if (n &#x3D;&#x3D; 1) return 1;
+        &#x2F;&#x2F; 如果有2阶，有两种走法：1+1或2
+        if (n &#x3D;&#x3D; 2) return 2;
+
+        &#x2F;&#x2F; 初始化前两阶走法数
+        int a &#x3D; 1; &#x2F;&#x2F; 走到第1阶的方法数
+        int b &#x3D; 2; &#x2F;&#x2F; 走到第2阶的方法数
+        int c &#x3D; 0; &#x2F;&#x2F; 用来存储当前阶的方法数
+
+        &#x2F;&#x2F; 从第3阶开始计算，当前阶的方法数是前两阶之和
+        for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;
+            c &#x3D; a + b; &#x2F;&#x2F; 状态转移：第i阶 &#x3D; 第(i-1)阶 + 第(i-2)阶
+            a &#x3D; b;     &#x2F;&#x2F; 更新a，往前移动一阶
+            b &#x3D; c;     &#x2F;&#x2F; 更新b，往前移动一阶
+        &#125;
+
+        &#x2F;&#x2F; 返回第n阶的方法数
+        return c;
+    &#125;
+&#125;</code></pre></div></figure>
+<p>时间复杂度：<span
+class="math inline"><em>O</em>(<em>n</em>)</span>，只遍历一次</p>
+<p>空间复杂度：<span
+class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。</p>
 <h2 id="总结">总结</h2>
-<p>分析一下这个快慢指针的方法，先看一张图：</p>
-<figure>
-<img
-src="https://assets.leetcode-cn.com/solution-static/142/142_fig1.png" srcset="/img/loading.gif" lazyload
-alt="fig1" />
-<figcaption aria-hidden="true">fig1</figcaption>
-</figure>
-<p><span class="math inline"><em>a</em></span>为环前的节点数量，<span
-class="math inline"><em>b</em></span>为入环的第一个节点到相遇点的节点数量，<span
-class="math inline"><em>c</em></span>为相遇点到入环第一个节点的节点数量。</p>
-<p>先看第一个过程，快指针追上慢指针：</p>
-<p><span
-class="math inline"><em>s</em><em>l</em><em>o</em><em>w</em> = <em>a</em> + <em>b</em></span>（快指针一定在慢指针走完一圈前追上，快指针比慢指针速度快1，而他们之间的距离最长为<span
-class="math inline"><em>b</em> + <em>c</em> − 1</span>，也就是环长-1。）</p>
-<p><span
-class="math inline"><em>q</em><em>u</em><em>i</em><em>c</em><em>k</em> = <em>a</em> + <em>b</em> + <em>n</em>(<em>b</em> + <em>c</em>)</span>（快指针在追上慢指针时，比其多走几个圈长）</p>
-<p><span
-class="math inline"><em>q</em><em>u</em><em>i</em><em>c</em><em>k</em> = 2 * <em>s</em><em>l</em><em>o</em><em>w</em></span>（快指针速度是慢指针的两倍，所以走的距离也是慢指针的两倍）</p>
-<p>带入<span
-class="math inline"><em>q</em><em>u</em><em>i</em><em>c</em><em>k</em></span>和<span
-class="math inline"><em>s</em><em>l</em><em>o</em><em>w</em></span>，<span
-class="math inline">2 * (<em>a</em> + <em>b</em>) = <em>a</em> + <em>b</em> + <em>n</em>(<em>b</em> + <em>c</em>)</span>，而题目要求的相当于就是<span
-class="math inline"><em>a</em></span>，移项得到<span
-class="math inline"><em>a</em> = <em>n</em> * (<em>b</em> + <em>c</em>) − <em>b</em></span>
-等价于 <span
-class="math inline"><em>a</em> = <em>n</em> * (<em>b</em> + <em>c</em>) + <em>c</em></span>。</p>
-<p>得到的式子代表<span
-class="math inline"><em>a</em></span>的长度相当于<span
-class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个指针从head出发，一个指针从相遇点出发，两个指针速度相同，那么二者一定会在入环处碰头，最后两个指针相遇时，相遇点指向的就是入环处。</p>
+<p>动态规划初体验，主要就是找到状态转移方程。递归的时间复杂度较高，可以用数组来优化。</p>
 
                 
               </div>
@@ -550,13 +500,11 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="print-no-link">#哈希表</a>
+        <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
       
-        <a href="/tags/%E9%93%BE%E8%A1%A8/" class="print-no-link">#链表</a>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
       
-        <a href="/tags/%E4%B8%AD%E7%AD%89/" class="print-no-link">#中等</a>
-      
-        <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" class="print-no-link">#快慢指针</a>
+        <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" class="print-no-link">#记忆化搜索</a>
       
     </div>
   
@@ -568,8 +516,8 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC142 - 环形链表 II</div>
-      <div>http://tsukinai.github.io/2025/08/08/LC142/</div>
+      <div>LC070 - 爬楼梯</div>
+      <div>http://tsukinai.github.io/2025/08/09/LC070/</div>
     </div>
     <div class="license-meta">
       
@@ -581,7 +529,7 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月8日</div>
+          <div>2025年8月9日</div>
         </div>
       
       
@@ -613,18 +561,12 @@ class="math inline"><em>c</em></span>的长度加上若干圈长，此时一个�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/08/LC019/" title="LC019 - 删除链表的倒数第N个节点">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC019 - 删除链表的倒数第N个节点</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/07/LC125/" title="LC125 - 验证回文串">
-                        <span class="hidden-mobile">LC125 - 验证回文串</span>
+                      <a href="/2025/08/09/LC020/" title="LC020 - 有效的括号">
+                        <span class="hidden-mobile">LC020 - 有效的括号</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
