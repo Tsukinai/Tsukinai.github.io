@@ -16,24 +16,24 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题 70. 爬楼梯 - 力扣（LeetCode） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入：n &#x3D; 2 输出：2 解释：有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶 示例 2： 输入：n &#x3D; 3 输出：3 解释：有三种方法可以爬到楼顶。 1.">
+    <meta name="description" content="原题 198. 打家劫舍 - 力扣（LeetCode） 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。 示例 1： 输入：[1,2,3,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC070 - 爬楼梯">
-<meta property="og:url" content="http://tsukinai.github.io/2025/08/09/LC070/index.html">
+<meta property="og:title" content="LC198 - 打家劫舍">
+<meta property="og:url" content="http://tsukinai.github.io/2025/08/11/LC198/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="原题 70. 爬楼梯 - 力扣（LeetCode） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入：n &#x3D; 2 输出：2 解释：有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶 示例 2： 输入：n &#x3D; 3 输出：3 解释：有三种方法可以爬到楼顶。 1.">
+<meta property="og:description" content="原题 198. 打家劫舍 - 力扣（LeetCode） 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。 示例 1： 输入：[1,2,3,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-09T10:09:10.000Z">
-<meta property="article:modified_time" content="2025-08-09T12:03:51.930Z">
+<meta property="article:published_time" content="2025-08-11T08:59:35.000Z">
+<meta property="article:modified_time" content="2025-08-11T09:13:03.444Z">
 <meta property="article:author" content="Tsukinai">
-<meta property="article:tag" content="简单">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="中等">
 <meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="记忆化搜索">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LC070 - 爬楼梯 - Tsukinai</title>
+  <title>LC198 - 打家劫舍 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -278,7 +278,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC070 - 爬楼梯"></span>
+            <span id="subtitle" data-typed-text="LC198 - 打家劫舍"></span>
           
         </div>
 
@@ -289,8 +289,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-09 18:09" pubdate>
-          2025年8月9日 晚上
+        <time datetime="2025-08-11 16:59" pubdate>
+          2025年8月11日 下午
         </time>
       </span>
     
@@ -301,7 +301,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          669 字
+          615 字
         
       </span>
     
@@ -357,109 +357,82 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LC070 - 爬楼梯</h1>
+            <h1 id="seo-header">LC198 - 打家劫舍</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="原题">原题</h2>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/description/">70.
-爬楼梯 - 力扣（LeetCode）</a></p>
-<p>假设你正在爬楼梯。需要 <code>n</code> 阶你才能到达楼顶。</p>
-<p>每次你可以爬 <code>1</code> 或 <code>2</code>
-个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber/description/">198.
+打家劫舍 - 力扣（LeetCode）</a></p>
+<p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong>。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你
+<strong>不触动警报装置的情况下</strong>
+，一夜之内能够偷窃到的最高金额。</p>
 <p><strong>示例 1：</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：n &#x3D; 2
-输出：2
-解释：有两种方法可以爬到楼顶。
-1. 1 阶 + 1 阶
-2. 2 阶</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：[1,2,3,1]
+输出：4
+解释：偷窃 1 号房屋 (金额 &#x3D; 1) ，然后偷窃 3 号房屋 (金额 &#x3D; 3)。
+     偷窃到的最高金额 &#x3D; 1 + 3 &#x3D; 4 。</code></pre></div></figure>
 <p><strong>示例 2：</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：n &#x3D; 3
-输出：3
-解释：有三种方法可以爬到楼顶。
-1. 1 阶 + 1 阶 + 1 阶
-2. 1 阶 + 2 阶
-3. 2 阶 + 1 阶</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：[2,7,9,3,1]
+输出：12
+解释：偷窃 1 号房屋 (金额 &#x3D; 2), 偷窃 3 号房屋 (金额 &#x3D; 9)，接着偷窃 5 号房屋 (金额 &#x3D; 1)。
+     偷窃到的最高金额 &#x3D; 2 + 9 + 1 &#x3D; 12 。</code></pre></div></figure>
 <p><strong>提示：</strong></p>
 <ul>
-<li><code>1 &lt;= n &lt;= 45</code></li>
+<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 400</code></li>
 </ul>
 <h2 id="题解">题解</h2>
-<h3 id="自己的解法超时">自己的解法（超时）</h3>
+<h3 id="动态规划数组">动态规划（数组）</h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int climbStairs(int n) &#123;
-        &#x2F;&#x2F; 一层楼梯的时候有1种走法
-        if (n &#x3D;&#x3D; 1) &#123;
-            return 1;
+    public int rob(int[] nums) &#123;
+        &#x2F;&#x2F; dp[i]为到第i间房最多偷的钱数
+        int dp[] &#x3D; new int[nums.length + 1];
+        &#x2F;&#x2F; 模拟一个虚拟的第0间房价值为0，方便计算dp[2]
+        dp[0] &#x3D; 0;
+        dp[1] &#x3D; nums[0];
+        &#x2F;&#x2F; 如果nums.length为1，会直接跳出循环，所以不需要单独讨论
+        for (int i &#x3D; 2; i &lt; nums.length + 1; i++) &#123;
+            &#x2F;&#x2F; 第i间房的两种情况
+            &#x2F;&#x2F; 1: 偷i - 2间的最高金额 + 第i间
+            &#x2F;&#x2F; 2: 偷i - 1间的最高金额
+            &#x2F;&#x2F; 比较二者取更大值
+            dp[i] &#x3D; Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
         &#125;
-        &#x2F;&#x2F; 两层楼梯的时候有2种走法
-        if (n &#x3D;&#x3D; 2) &#123;
-            return 2;
-        &#125;
-        &#x2F;&#x2F; 在n楼时，要么从n-1楼走一步上来，要么从n-2楼走两步上来
-        return climbStairs(n - 1) + climbStairs(n - 2);
+        return dp[nums.length];
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(2<sup><em>n</em></sup>)</span>，原因是每次调用
-<code>climbStairs(n)</code> 会递归调用 <code>climbStairs(n-1)</code> 和
-<code>climbStairs(n-2)</code>，形成一棵高度为 n
-的二叉递归树，节点数大致是指数增长。</p>
+class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
+class="math inline"><em>n</em></span>
+是数组长度。只需要对数组遍历一次。</p>
 <p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，递归栈的最大深度。</p>
-<h3 id="动态规划">动态规划</h3>
+class="math inline"><em>O</em>(<em>n</em>)</span>，dp数组长度为<span
+class="math inline"><em>n</em> + 1</span>。</p>
+<h3 id="动态规划滚动数组">动态规划（滚动数组）</h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int climbStairs(int n) &#123;
-        if (n &#x3D;&#x3D; 1) return 1;
-        if (n &#x3D;&#x3D; 2) return 2;
-
-        int[] dp &#x3D; new int[n + 1];
-        dp[1] &#x3D; 1;  &#x2F;&#x2F; 只有1阶，走法只有1种
-        dp[2] &#x3D; 2;  &#x2F;&#x2F; 2阶，走法有2种
-
-        for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;
-            dp[i] &#x3D; dp[i - 1] + dp[i - 2];  &#x2F;&#x2F; 状态转移方程
+    public int rob(int[] nums) &#123;
+        int result &#x3D; nums[0];
+        int first &#x3D; 0;
+        int second &#x3D; nums[0];
+        for (int i &#x3D; 2; i &lt; nums.length + 1; i++) &#123;
+            result &#x3D; Math.max(second, first + nums[i - 1])
+            first &#x3D; second;
+            second &#x3D; result;
         &#125;
-
-        return dp[n];
+        return result;
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，只遍历一次</p>
+class="math inline"><em>O</em>(<em>n</em>)</span>，其中 <span
+class="math inline"><em>n</em></span>
+是数组长度。只需要对数组遍历一次。</p>
 <p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，存储了dp数组</p>
-<h3 id="空间优化版">空间优化版</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int climbStairs(int n) &#123;
-        &#x2F;&#x2F; 如果只有1阶，只有一种走法
-        if (n &#x3D;&#x3D; 1) return 1;
-        &#x2F;&#x2F; 如果有2阶，有两种走法：1+1或2
-        if (n &#x3D;&#x3D; 2) return 2;
-
-        &#x2F;&#x2F; 初始化前两阶走法数
-        int a &#x3D; 1; &#x2F;&#x2F; 走到第1阶的方法数
-        int b &#x3D; 2; &#x2F;&#x2F; 走到第2阶的方法数
-        int c &#x3D; 0; &#x2F;&#x2F; 用来存储当前阶的方法数
-
-        &#x2F;&#x2F; 从第3阶开始计算，当前阶的方法数是前两阶之和
-        for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;
-            c &#x3D; a + b; &#x2F;&#x2F; 状态转移：第i阶 &#x3D; 第(i-1)阶 + 第(i-2)阶
-            a &#x3D; b;     &#x2F;&#x2F; 更新a，往前移动一阶
-            b &#x3D; c;     &#x2F;&#x2F; 更新b，往前移动一阶
-        &#125;
-
-        &#x2F;&#x2F; 返回第n阶的方法数
-        return c;
-    &#125;
-&#125;</code></pre></div></figure>
-<p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，只遍历一次</p>
-<p>空间复杂度：<span
-class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。</p>
+class="math inline"><em>O</em>(1)</span>，采用滚动数组，常数个变量。</p>
 <h2 id="总结">总结</h2>
-<p>动态规划初体验，主要就是找到状态转移方程。递归的时间复杂度较高，可以用数组来优化。</p>
+<p>利用滚动数组可以节省空间，尤其是像这种目前状态只依赖于<strong>有限且相同</strong>个以前的状态的情况。</p>
 
                 
               </div>
@@ -500,11 +473,11 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
+        <a href="/tags/%E6%95%B0%E7%BB%84/" class="print-no-link">#数组</a>
+      
+        <a href="/tags/%E4%B8%AD%E7%AD%89/" class="print-no-link">#中等</a>
       
         <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
-      
-        <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" class="print-no-link">#记忆化搜索</a>
       
     </div>
   
@@ -516,8 +489,8 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC070 - 爬楼梯</div>
-      <div>http://tsukinai.github.io/2025/08/09/LC070/</div>
+      <div>LC198 - 打家劫舍</div>
+      <div>http://tsukinai.github.io/2025/08/11/LC198/</div>
     </div>
     <div class="license-meta">
       
@@ -529,7 +502,7 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月9日</div>
+          <div>2025年8月11日</div>
         </div>
       
       
@@ -561,18 +534,12 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/11/LC118/" title="LC118 - 杨辉三角">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC118 - 杨辉三角</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/09/LC020/" title="LC020 - 有效的括号">
-                        <span class="hidden-mobile">LC020 - 有效的括号</span>
+                      <a href="/2025/08/11/LC118/" title="LC118 - 杨辉三角">
+                        <span class="hidden-mobile">LC118 - 杨辉三角</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

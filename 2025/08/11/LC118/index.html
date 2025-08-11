@@ -16,24 +16,24 @@
   <meta name="author" content="Tsukinai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原题 70. 爬楼梯 - 力扣（LeetCode） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入：n &#x3D; 2 输出：2 解释：有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶 示例 2： 输入：n &#x3D; 3 输出：3 解释：有三种方法可以爬到楼顶。 1.">
+    <meta name="description" content="原题 118. 杨辉三角 - 力扣（LeetCode） 给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。 在「杨辉三角」中，每个数是它左上方和右上方的数的和。   img  示例 1: 输入: numRows &#x3D; 5 输出: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]] 示例 2: 输入: num">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC070 - 爬楼梯">
-<meta property="og:url" content="http://tsukinai.github.io/2025/08/09/LC070/index.html">
+<meta property="og:title" content="LC118 - 杨辉三角">
+<meta property="og:url" content="http://tsukinai.github.io/2025/08/11/LC118/index.html">
 <meta property="og:site_name" content="Tsukinai">
-<meta property="og:description" content="原题 70. 爬楼梯 - 力扣（LeetCode） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入：n &#x3D; 2 输出：2 解释：有两种方法可以爬到楼顶。 1. 1 阶 + 1 阶 2. 2 阶 示例 2： 输入：n &#x3D; 3 输出：3 解释：有三种方法可以爬到楼顶。 1.">
+<meta property="og:description" content="原题 118. 杨辉三角 - 力扣（LeetCode） 给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。 在「杨辉三角」中，每个数是它左上方和右上方的数的和。   img  示例 1: 输入: numRows &#x3D; 5 输出: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]] 示例 2: 输入: num">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-09T10:09:10.000Z">
-<meta property="article:modified_time" content="2025-08-09T12:03:51.930Z">
+<meta property="article:published_time" content="2025-08-11T08:59:24.000Z">
+<meta property="article:modified_time" content="2025-08-11T09:07:37.074Z">
 <meta property="article:author" content="Tsukinai">
 <meta property="article:tag" content="简单">
+<meta property="article:tag" content="数组">
 <meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="记忆化搜索">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LC070 - 爬楼梯 - Tsukinai</title>
+  <title>LC118 - 杨辉三角 - Tsukinai</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -278,7 +278,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC070 - 爬楼梯"></span>
+            <span id="subtitle" data-typed-text="LC118 - 杨辉三角"></span>
           
         </div>
 
@@ -289,8 +289,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-09 18:09" pubdate>
-          2025年8月9日 晚上
+        <time datetime="2025-08-11 16:59" pubdate>
+          2025年8月11日 下午
         </time>
       </span>
     
@@ -301,7 +301,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          669 字
+          315 字
         
       </span>
     
@@ -312,7 +312,7 @@
         
         
         
-          6 分钟
+          3 分钟
         
       </span>
     
@@ -357,109 +357,62 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LC070 - 爬楼梯</h1>
+            <h1 id="seo-header">LC118 - 杨辉三角</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="原题">原题</h2>
 <p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/description/">70.
-爬楼梯 - 力扣（LeetCode）</a></p>
-<p>假设你正在爬楼梯。需要 <code>n</code> 阶你才能到达楼顶。</p>
-<p>每次你可以爬 <code>1</code> 或 <code>2</code>
-个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
-<p><strong>示例 1：</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：n &#x3D; 2
-输出：2
-解释：有两种方法可以爬到楼顶。
-1. 1 阶 + 1 阶
-2. 2 阶</code></pre></div></figure>
-<p><strong>示例 2：</strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：n &#x3D; 3
-输出：3
-解释：有三种方法可以爬到楼顶。
-1. 1 阶 + 1 阶 + 1 阶
-2. 1 阶 + 2 阶
-3. 2 阶 + 1 阶</code></pre></div></figure>
-<p><strong>提示：</strong></p>
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/pascals-triangle/description/">118.
+杨辉三角 - 力扣（LeetCode）</a></p>
+<p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前
+<em><code>numRows</code></em> 行。</p>
+<p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p>
+<figure>
+<img
+src="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p><strong>示例 1:</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: numRows &#x3D; 5
+输出: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</code></pre></div></figure>
+<p><strong>示例 2:</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: numRows &#x3D; 1
+输出: [[1]]</code></pre></div></figure>
+<p><strong>提示:</strong></p>
 <ul>
-<li><code>1 &lt;= n &lt;= 45</code></li>
+<li><code>1 &lt;= numRows &lt;= 30</code></li>
 </ul>
 <h2 id="题解">题解</h2>
-<h3 id="自己的解法超时">自己的解法（超时）</h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int climbStairs(int n) &#123;
-        &#x2F;&#x2F; 一层楼梯的时候有1种走法
-        if (n &#x3D;&#x3D; 1) &#123;
-            return 1;
+    public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) &#123;
+        List&lt;List&lt;Integer&gt;&gt; result &#x3D; new ArrayList&lt;&gt;();
+        for (int i &#x3D; 0; i &lt; numRows; i++) &#123;
+            List&lt;Integer&gt; row &#x3D; new ArrayList&lt;&gt;();
+            &#x2F;&#x2F; 给每一行的元素赋值
+            for (int j &#x3D; 0; j &lt;&#x3D; i; j++) &#123;
+                &#x2F;&#x2F; 杨辉三角开头结尾为1
+                if (j &#x3D;&#x3D; 0 || j &#x3D;&#x3D; i) &#123;
+                    row.add(1);
+                &#125; else &#123;
+                    &#x2F;&#x2F; 其他结点等于左上右上之和
+                    row.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+                &#125;
+            &#125;
+            result.add(row);
         &#125;
-        &#x2F;&#x2F; 两层楼梯的时候有2种走法
-        if (n &#x3D;&#x3D; 2) &#123;
-            return 2;
-        &#125;
-        &#x2F;&#x2F; 在n楼时，要么从n-1楼走一步上来，要么从n-2楼走两步上来
-        return climbStairs(n - 1) + climbStairs(n - 2);
+        return result;
     &#125;
 &#125;</code></pre></div></figure>
 <p>时间复杂度：<span
-class="math inline"><em>O</em>(2<sup><em>n</em></sup>)</span>，原因是每次调用
-<code>climbStairs(n)</code> 会递归调用 <code>climbStairs(n-1)</code> 和
-<code>climbStairs(n-2)</code>，形成一棵高度为 n
-的二叉递归树，节点数大致是指数增长。</p>
+class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span>，<span
+class="math inline"><em>n</em></span>为行数，因为两层嵌套循环所以是平方。</p>
 <p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，递归栈的最大深度。</p>
-<h3 id="动态规划">动态规划</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int climbStairs(int n) &#123;
-        if (n &#x3D;&#x3D; 1) return 1;
-        if (n &#x3D;&#x3D; 2) return 2;
-
-        int[] dp &#x3D; new int[n + 1];
-        dp[1] &#x3D; 1;  &#x2F;&#x2F; 只有1阶，走法只有1种
-        dp[2] &#x3D; 2;  &#x2F;&#x2F; 2阶，走法有2种
-
-        for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;
-            dp[i] &#x3D; dp[i - 1] + dp[i - 2];  &#x2F;&#x2F; 状态转移方程
-        &#125;
-
-        return dp[n];
-    &#125;
-&#125;</code></pre></div></figure>
-<p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，只遍历一次</p>
-<p>空间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，存储了dp数组</p>
-<h3 id="空间优化版">空间优化版</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;
-    public int climbStairs(int n) &#123;
-        &#x2F;&#x2F; 如果只有1阶，只有一种走法
-        if (n &#x3D;&#x3D; 1) return 1;
-        &#x2F;&#x2F; 如果有2阶，有两种走法：1+1或2
-        if (n &#x3D;&#x3D; 2) return 2;
-
-        &#x2F;&#x2F; 初始化前两阶走法数
-        int a &#x3D; 1; &#x2F;&#x2F; 走到第1阶的方法数
-        int b &#x3D; 2; &#x2F;&#x2F; 走到第2阶的方法数
-        int c &#x3D; 0; &#x2F;&#x2F; 用来存储当前阶的方法数
-
-        &#x2F;&#x2F; 从第3阶开始计算，当前阶的方法数是前两阶之和
-        for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;
-            c &#x3D; a + b; &#x2F;&#x2F; 状态转移：第i阶 &#x3D; 第(i-1)阶 + 第(i-2)阶
-            a &#x3D; b;     &#x2F;&#x2F; 更新a，往前移动一阶
-            b &#x3D; c;     &#x2F;&#x2F; 更新b，往前移动一阶
-        &#125;
-
-        &#x2F;&#x2F; 返回第n阶的方法数
-        return c;
-    &#125;
-&#125;</code></pre></div></figure>
-<p>时间复杂度：<span
-class="math inline"><em>O</em>(<em>n</em>)</span>，只遍历一次</p>
-<p>空间复杂度：<span
-class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。</p>
+class="math inline"><em>O</em>(1)</span>。不考虑返回值的空间占用。</p>
 <h2 id="总结">总结</h2>
-<p>动态规划初体验，主要就是找到状态转移方程。递归的时间复杂度较高，可以用数组来优化。</p>
+<p>没有啥好总结的，思路很简单，就是不要局限思维，看到动态规划就习惯性定义一个dp数组，最后又把数组给转换为List。</p>
 
                 
               </div>
@@ -502,9 +455,9 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
       
         <a href="/tags/%E7%AE%80%E5%8D%95/" class="print-no-link">#简单</a>
       
-        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
+        <a href="/tags/%E6%95%B0%E7%BB%84/" class="print-no-link">#数组</a>
       
-        <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" class="print-no-link">#记忆化搜索</a>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
       
     </div>
   
@@ -516,8 +469,8 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC070 - 爬楼梯</div>
-      <div>http://tsukinai.github.io/2025/08/09/LC070/</div>
+      <div>LC118 - 杨辉三角</div>
+      <div>http://tsukinai.github.io/2025/08/11/LC118/</div>
     </div>
     <div class="license-meta">
       
@@ -529,7 +482,7 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月9日</div>
+          <div>2025年8月11日</div>
         </div>
       
       
@@ -561,9 +514,9 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/11/LC118/" title="LC118 - 杨辉三角">
+                      <a href="/2025/08/11/LC198/" title="LC198 - 打家劫舍">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LC118 - 杨辉三角</span>
+                        <span class="hidden-mobile">LC198 - 打家劫舍</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -571,8 +524,8 @@ class="math inline"><em>O</em>(1)</span>，存储了a，b，c这三个变量。<
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/09/LC020/" title="LC020 - 有效的括号">
-                        <span class="hidden-mobile">LC020 - 有效的括号</span>
+                      <a href="/2025/08/09/LC070/" title="LC070 - 爬楼梯">
+                        <span class="hidden-mobile">LC070 - 爬楼梯</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

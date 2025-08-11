@@ -4,6 +4,74 @@
   
   
   <entry>
+    <title>LC198 - 打家劫舍</title>
+    <link href="/2025/08/11/LC198/"/>
+    <url>/2025/08/11/LC198/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题">原题</h2><p><a href="https://leetcode.cn/problems/house-robber/description/">198.打家劫舍 - 力扣（LeetCode）</a></p><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong>。</p><p>给定一个代表每个房屋存放金额的非负整数数组，计算你<strong>不触动警报装置的情况下</strong>，一夜之内能够偷窃到的最高金额。</p><p><strong>示例 1：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：[1,2,3,1]输出：4解释：偷窃 1 号房屋 (金额 &#x3D; 1) ，然后偷窃 3 号房屋 (金额 &#x3D; 3)。     偷窃到的最高金额 &#x3D; 1 + 3 &#x3D; 4 。</code></pre></div></figure><p><strong>示例 2：</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：[2,7,9,3,1]输出：12解释：偷窃 1 号房屋 (金额 &#x3D; 2), 偷窃 3 号房屋 (金额 &#x3D; 9)，接着偷窃 5 号房屋 (金额 &#x3D; 1)。     偷窃到的最高金额 &#x3D; 2 + 9 + 1 &#x3D; 12 。</code></pre></div></figure><p><strong>提示：</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 100</code></li><li><code>0 &lt;= nums[i] &lt;= 400</code></li></ul><h2 id="题解">题解</h2><h3 id="动态规划数组">动态规划（数组）</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int rob(int[] nums) &#123;        &#x2F;&#x2F; dp[i]为到第i间房最多偷的钱数        int dp[] &#x3D; new int[nums.length + 1];        &#x2F;&#x2F; 模拟一个虚拟的第0间房价值为0，方便计算dp[2]        dp[0] &#x3D; 0;        dp[1] &#x3D; nums[0];        &#x2F;&#x2F; 如果nums.length为1，会直接跳出循环，所以不需要单独讨论        for (int i &#x3D; 2; i &lt; nums.length + 1; i++) &#123;            &#x2F;&#x2F; 第i间房的两种情况            &#x2F;&#x2F; 1: 偷i - 2间的最高金额 + 第i间            &#x2F;&#x2F; 2: 偷i - 1间的最高金额            &#x2F;&#x2F; 比较二者取更大值            dp[i] &#x3D; Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);        &#125;        return dp[nums.length];    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是数组长度。只需要对数组遍历一次。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，dp数组长度为<spanclass="math inline"><em>n</em> + 1</span>。</p><h3 id="动态规划滚动数组">动态规划（滚动数组）</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public int rob(int[] nums) &#123;        int result &#x3D; nums[0];        int first &#x3D; 0;        int second &#x3D; nums[0];        for (int i &#x3D; 2; i &lt; nums.length + 1; i++) &#123;            result &#x3D; Math.max(second, first + nums[i - 1])            first &#x3D; second;            second &#x3D; result;        &#125;        return result;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em>)</span>，其中 <spanclass="math inline"><em>n</em></span>是数组长度。只需要对数组遍历一次。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(1)</span>，采用滚动数组，常数个变量。</p><h2 id="总结">总结</h2><p>利用滚动数组可以节省空间，尤其是像这种目前状态只依赖于<strong>有限且相同</strong>个以前的状态的情况。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>Classic150</category>
+      
+      <category>中等</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>中等</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LC118 - 杨辉三角</title>
+    <link href="/2025/08/11/LC118/"/>
+    <url>/2025/08/11/LC118/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="原题">原题</h2><p><ahref="https://leetcode.cn/problems/pascals-triangle/description/">118.杨辉三角 - 力扣（LeetCode）</a></p><p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前<em><code>numRows</code></em> 行。</p><p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p><figure><imgsrc="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif"alt="img" /><figcaption aria-hidden="true">img</figcaption></figure><p><strong>示例 1:</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: numRows &#x3D; 5输出: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</code></pre></div></figure><p><strong>示例 2:</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入: numRows &#x3D; 1输出: [[1]]</code></pre></div></figure><p><strong>提示:</strong></p><ul><li><code>1 &lt;= numRows &lt;= 30</code></li></ul><h2 id="题解">题解</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">class Solution &#123;    public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) &#123;        List&lt;List&lt;Integer&gt;&gt; result &#x3D; new ArrayList&lt;&gt;();        for (int i &#x3D; 0; i &lt; numRows; i++) &#123;            List&lt;Integer&gt; row &#x3D; new ArrayList&lt;&gt;();            &#x2F;&#x2F; 给每一行的元素赋值            for (int j &#x3D; 0; j &lt;&#x3D; i; j++) &#123;                &#x2F;&#x2F; 杨辉三角开头结尾为1                if (j &#x3D;&#x3D; 0 || j &#x3D;&#x3D; i) &#123;                    row.add(1);                &#125; else &#123;                    &#x2F;&#x2F; 其他结点等于左上右上之和                    row.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));                &#125;            &#125;            result.add(row);        &#125;        return result;    &#125;&#125;</code></pre></div></figure><p>时间复杂度：<spanclass="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span>，<spanclass="math inline"><em>n</em></span>为行数，因为两层嵌套循环所以是平方。</p><p>空间复杂度：<spanclass="math inline"><em>O</em>(1)</span>。不考虑返回值的空间占用。</p><h2 id="总结">总结</h2><p>没有啥好总结的，思路很简单，就是不要局限思维，看到动态规划就习惯性定义一个dp数组，最后又把数组给转换为List。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣刷题记录</category>
+      
+      <category>Hot100</category>
+      
+      <category>简单</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>简单</tag>
+      
+      <tag>数组</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LC070 - 爬楼梯</title>
     <link href="/2025/08/09/LC070/"/>
     <url>/2025/08/09/LC070/</url>
